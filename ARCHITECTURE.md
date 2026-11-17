@@ -1,5 +1,11 @@
 # One point, independent subsystems
 
+Mission 003 adds distribution boundaries, not new mathematical implementations. The wheel exports `Kernel`, `PointState`, `validate_command`, `Runtime`, `History`, `replay` and `exact_reexecution`. `cli.py` imports the desktop GUI only for an explicit graphical launch. The base wheel has no external dependencies; pyodbc, psutil and Qt are optional adapters. Missing ODBC bindings produce an explicit unavailable status while the local journal continues.
+
+Windows bundles this same Python package with its interpreter and desktop dependencies. Android embeds the same `src/atomverse_point` modules through Chaquopy; a native Java activity renders snapshots and queues validated commands. `android_bridge.py` controls lifecycle and local storage. It contains no independent trajectory, oscillator or collision equations. Native drawing and camera transforms affect perception only. Android pauses and checkpoints on backgrounding; it does not claim to be a persistent background service. Desktop keep-running behavior is unchanged.
+
+Eight shared conformance scenarios exercise absolute/relative positioning, acceleration, line, circle, helix, spiral, oscillator and reflection. Comparisons exclude random identities and wall-clock timestamps and use absolute/relative tolerance `1e-10`. Actual execution evidence identifies Python versions, CPU architecture and any emulator translation. A `py3-none-any` wheel describes its pure-Python payload, not proof that every optional desktop adapter works on every platform.
+
 ```mermaid
 flowchart LR
     Operator[Native operator controls] --> Validate[Strict command validation]

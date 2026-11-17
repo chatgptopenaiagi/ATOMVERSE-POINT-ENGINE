@@ -1,0 +1,413 @@
+{
+  "status": "PASS",
+  "sha256": "c45c10e93023f022c5fc8d57c19986eaf367a5af807c5ad242453313060d4968",
+  "bytes": 2386839,
+  "architecture": "Windows x64",
+  "outside_source_directory": true,
+  "python_removed_from_PATH": true,
+  "bundled_python": true,
+  "gui": {
+    "status": "PASS",
+    "error": null,
+    "checks": [
+      {
+        "name": "one primary sphere at origin",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "hardware OpenGL context",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "absolute positive and negative coordinates",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "camera independent; radius and RGBA",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "line reaches destination",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "helical motion changes position",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "pause freezes simulation time and coordinates",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "resume advances point",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "stop at sphere-expanded wall boundary",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "pass through wall",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "committed history session is selectable",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "history replay loads recorded states",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "replay does not mutate live position",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "real framebuffer captured",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "oscillator controls calculate simulated signal",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "perceptual view changes preserve authoritative state",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "delete removes active entity but retains history",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "create generates one new entity identity",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "restore reconstructs historical identity and parameters",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "entity evolves while visualization is closed",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "real opt-in telemetry modulates bounded amplitude",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "hardware modulation can be disabled",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "unavailable AI returns an error without a proposal",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "engine remains responsive without AI",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      },
+      {
+        "name": "direct command works after unavailable AI",
+        "passed": true,
+        "method": "actual GUI control and runtime observation"
+      }
+    ],
+    "packaged": true,
+    "version": "0.3.0a1",
+    "renderer": {
+      "graphics": {
+        "vendor": "NVIDIA Corporation",
+        "renderer": "NVIDIA GeForce RTX 3050/PCIe/SSE2",
+        "version": "4.6.0 NVIDIA 621.24"
+      },
+      "frames": 878,
+      "average_fps": 47.43233559882997,
+      "mean_cpu_paint_ms": 0.741311666618761
+    },
+    "runtime": {
+      "worker_iterations_hz": 240.0448347094925,
+      "worker_cpu_equivalent_percent": 3.775200770574104,
+      "timing_overruns": 0,
+      "error": null,
+      "command_count_measured": 25,
+      "command_latency_p95_ms": 4.0928,
+      "command_latency_max_ms": 4.3895,
+      "mean_kernel_update_us": 19.303571428571427
+    },
+    "recording": {
+      "session_id": "026366b8-f494-4e03-bf20-7568592a2c51",
+      "written": 1709,
+      "samples_written": 1592,
+      "dropped_samples": 0,
+      "queue_depth": 0,
+      "batches": 392,
+      "events_per_second": 92.20961683607634,
+      "last_commit_ms": 1.1341999997966923,
+      "error": null,
+      "payload_bytes": 1412956
+    },
+    "rss_bytes": 259170304,
+    "sql_status": "disabled",
+    "sql_rows": 0,
+    "clean_shutdown": true,
+    "shutdown_errors": [],
+    "final_recording": {
+      "session_id": "026366b8-f494-4e03-bf20-7568592a2c51",
+      "written": 1722,
+      "samples_written": 1605,
+      "dropped_samples": 0,
+      "queue_depth": 0,
+      "batches": 396,
+      "events_per_second": 92.28234248920218,
+      "last_commit_ms": 0.8350999996764585,
+      "error": null,
+      "payload_bytes": 1423893
+    }
+  },
+  "gui_test_seconds_including_startup": 25.115531100000226,
+  "headless": "PASS",
+  "sqlite_integrity": "ok",
+  "vectors": {
+    "absolute_relative": {
+      "position": [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.0,
+      "tick": 0,
+      "schema_version": 2
+    },
+    "accelerated": {
+      "position": [
+        1.250000000000012,
+        -1.9999999999999953,
+        2.8750000000000013
+      ],
+      "velocity": [
+        1.5000000000000249,
+        -2.0,
+        2.750000000000014
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 1.0,
+      "tick": 240,
+      "schema_version": 2
+    },
+    "line": {
+      "position": [
+        2.999999999999993,
+        -1.9999999999999953,
+        0.9999999999999977
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 1.0,
+      "tick": 240,
+      "schema_version": 2
+    },
+    "circle": {
+      "position": [
+        -0.5857864376269064,
+        1.4142135623730965,
+        0.0
+      ],
+      "velocity": [
+        -4.442882937438775,
+        4.442882937438775,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.25,
+      "tick": 60,
+      "schema_version": 2
+    },
+    "helix": {
+      "position": [
+        -3.4142135623730887,
+        1.4142135623731014,
+        0.29999999999999943
+      ],
+      "velocity": [
+        -4.44288293741657,
+        -4.442882937405468,
+        0.4000000000004
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.75,
+      "tick": 180,
+      "schema_version": 2
+    },
+    "spiral": {
+      "position": [
+        -3.4672465709620797,
+        1.4672465709620925,
+        0.0
+      ],
+      "velocity": [
+        -4.680201725637545,
+        -4.538780369489626,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.75,
+      "tick": 180,
+      "schema_version": 2
+    },
+    "oscillator": {
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 2.0,
+      "amplitude": 3.0,
+      "phase": 0.25,
+      "oscillator_value": -2.4060759957213196,
+      "oscillator_time": 0.3041666666666668,
+      "sim_time": 0.30416666666666664,
+      "tick": 73,
+      "schema_version": 2
+    },
+    "reflection": {
+      "position": [
+        -0.9999999999999943,
+        0.9999999999999977,
+        0.0
+      ],
+      "velocity": [
+        -10.0,
+        1.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 1.0,
+      "tick": 240,
+      "schema_version": 2
+    }
+  },
+  "test_method": "actual copied executable, native GUI controls, framebuffer capture, SQLite and subprocess exit checks"
+}

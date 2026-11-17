@@ -1,15 +1,25 @@
 [project]
 name = "atomverse-point-engine"
-version = "0.2.0a1"
+version = "0.3.0a1"
 description = "One precise, controllable, observable spherical computational entity"
 requires-python = ">=3.11"
-dependencies = ["PySide6>=6.8,<7", "pyodbc>=5.2,<6", "psutil>=7,<8"]
+readme = "README.md"
+dependencies = []
+license-files = ["LICENSE-DECISION.md", "THIRD-PARTY-NOTICES.md"]
+
+[project.urls]
+Repository = "https://github.com/chatgptopenaiagi/ATOMVERSE-POINT-ENGINE"
+Documentation = "https://github.com/chatgptopenaiagi/ATOMVERSE-POINT-ENGINE#readme"
 
 [project.optional-dependencies]
+gui = ["PySide6>=6.8,<7", "psutil>=7,<8"]
+sql = ["pyodbc>=5.2,<6"]
+telemetry = ["psutil>=7,<8"]
 dev = ["pytest>=8,<10", "pyinstaller>=6.16,<7", "jsonschema>=4.23,<5"]
 
 [project.scripts]
-atomverse-point-engine = "atomverse_point.app:main"
+atomverse-point = "atomverse_point.cli:main"
+atomverse-point-engine = "atomverse_point.cli:desktop_main"
 
 [build-system]
 requires = ["setuptools>=77"]
@@ -17,6 +27,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+atomverse_point = ["py.typed"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

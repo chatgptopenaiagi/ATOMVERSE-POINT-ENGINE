@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "bytecode_objects_inspected": 28121,
+  "personal_path_or_private_file_findings": 0,
+  "license_payload_matches": {
+    "BZIP2.txt": true,
+    "OPENSSL.txt": true,
+    "CHAQUOPY.txt": true,
+    "PYTHON.txt": true,
+    "android/BZIP2.txt": true,
+    "android/OPENSSL.txt": true,
+    "android/CHAQUOPY.txt": true,
+    "android/PYTHON.txt": true
+  },
+  "android_native_abis": [
+    "arm64-v8a"
+  ],
+  "exe_sha256": "ddfa95177e3b864fa13e1d342221c2cbad2414ba15e0f4263375e314252ec862",
+  "apk_sha256": "2d9eef934c95659e25bdd39279f0aa595c5b6be13e3f4fdff2130e54f31c0160"
+}

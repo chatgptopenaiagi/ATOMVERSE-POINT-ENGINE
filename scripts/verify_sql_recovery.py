@@ -3,6 +3,7 @@ No SQL Server service is stopped; the client starts at a closed loopback port,
 then reconnects to the verified local instance and retries the durable journal.
 """
 import json
+import argparse
 from pathlib import Path
 import sqlite3
 import sys
@@ -14,6 +15,7 @@ from atomverse_point.history import History,SQLReplicator
 from atomverse_point.kernel import Kernel
 
 root=Path(__file__).resolve().parents[1]; report={'status':'UNAVAILABLE','method':'actual local SQL Server; isolated global temporary tables; real connection failure followed by recovery'}
+parser=argparse.ArgumentParser(); parser.add_argument('--output',type=Path,default=root/'EVIDENCE/SQL-RECOVERY.json'); args=parser.parse_args()
 anchor=None; h=None; replica=None
 try:
     connection='DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost;DATABASE=tempdb;Trusted_Connection=yes;Encrypt=yes;TrustServerCertificate=yes;UseFMTONLY=Yes;'
@@ -57,5 +59,5 @@ finally:
     if replica: replica.close()
     if h: h.close()
     if anchor: anchor.close()
-    (root/'EVIDENCE/SQL-RECOVERY.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    args.output.write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps(report,indent=2))

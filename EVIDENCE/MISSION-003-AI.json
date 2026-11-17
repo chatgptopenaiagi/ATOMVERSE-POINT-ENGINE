@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "method": "real isolated Ollama server using existing weights",
+  "model_downloaded": false,
+  "cases": [
+    {
+      "pass": true,
+      "proposal": {
+        "command": {
+          "action": "teleport",
+          "position": [
+            10.0,
+            5.0,
+            3.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 77.6429578999996,
+        "eval_count": 16,
+        "eval_duration_ns": 6327589000,
+        "load_duration_ns": 65743865900
+      }
+    },
+    {
+      "pass": true,
+      "proposal": {
+        "command": {
+          "action": "translate",
+          "delta": [
+            1.0,
+            -2.0,
+            3.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 11.151121799997782,
+        "eval_count": 14,
+        "eval_duration_ns": 5707710000,
+        "load_duration_ns": 29811800
+      }
+    },
+    {
+      "pass": true,
+      "proposal": {
+        "command": {
+          "action": "oscillator",
+          "frequency": 2.0,
+          "amplitude": 3.0,
+          "phase": 0.0,
+          "enabled": true
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 14.414058700000169,
+        "eval_count": 24,
+        "eval_duration_ns": 9241534000,
+        "load_duration_ns": 6385000
+      }
+    }
+  ],
+  "details": {
+    "parent_model": "qwen3.8:27b-q4_K_M",
+    "format": "gguf",
+    "family": "qwen35",
+    "families": [
+      "qwen35"
+    ],
+    "parameter_size": "27.3B",
+    "quantization_level": "Q4_K_M",
+    "runner": "llamacpp"
+  },
+  "owned_server_stopped": true
+}

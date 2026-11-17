@@ -1,0 +1,239 @@
+{
+  "status": "PASS",
+  "version": "0.3.0a1",
+  "wheel": "atomverse_point_engine-0.3.0a1-py3-none-any.whl",
+  "sha256": "1aa153fdf016ee601155139ff6bed0e4ffb7b14253dbd7468ff1d05507914a7b",
+  "fresh_environment": true,
+  "outside_source_tree": true,
+  "tests_passed": 78,
+  "cli": "PASS",
+  "uninstall": "PASS",
+  "history_preserved_after_uninstall": true,
+  "wheel_tags": "py3-none-any",
+  "native_payload_files": 0,
+  "checks": {
+    "python": "3.14.9",
+    "kernel_import": "PASS",
+    "optional_dependencies_absent": true,
+    "sqlite_integrity": "ok",
+    "ai_unavailable": "PASS"
+  },
+  "vectors": {
+    "absolute_relative": {
+      "position": [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.0,
+      "tick": 0,
+      "schema_version": 2
+    },
+    "accelerated": {
+      "position": [
+        1.250000000000012,
+        -1.9999999999999953,
+        2.8750000000000013
+      ],
+      "velocity": [
+        1.5000000000000249,
+        -2.0,
+        2.750000000000014
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 1.0,
+      "tick": 240,
+      "schema_version": 2
+    },
+    "line": {
+      "position": [
+        2.999999999999993,
+        -1.9999999999999953,
+        0.9999999999999977
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 1.0,
+      "tick": 240,
+      "schema_version": 2
+    },
+    "circle": {
+      "position": [
+        -0.5857864376269064,
+        1.4142135623730965,
+        0.0
+      ],
+      "velocity": [
+        -4.442882937438775,
+        4.442882937438775,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.25,
+      "tick": 60,
+      "schema_version": 2
+    },
+    "helix": {
+      "position": [
+        -3.4142135623730887,
+        1.4142135623731014,
+        0.29999999999999943
+      ],
+      "velocity": [
+        -4.44288293741657,
+        -4.442882937405468,
+        0.4000000000004
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.75,
+      "tick": 180,
+      "schema_version": 2
+    },
+    "spiral": {
+      "position": [
+        -3.4672465709620797,
+        1.4672465709620925,
+        0.0
+      ],
+      "velocity": [
+        -4.680201725637545,
+        -4.538780369489626,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 0.75,
+      "tick": 180,
+      "schema_version": 2
+    },
+    "oscillator": {
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 2.0,
+      "amplitude": 3.0,
+      "phase": 0.25,
+      "oscillator_value": -2.4060759957213196,
+      "oscillator_time": 0.3041666666666668,
+      "sim_time": 0.30416666666666664,
+      "tick": 73,
+      "schema_version": 2
+    },
+    "reflection": {
+      "position": [
+        -0.9999999999999943,
+        0.9999999999999977,
+        0.0
+      ],
+      "velocity": [
+        -10.0,
+        1.0,
+        0.0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1.0,
+        1.0
+      ],
+      "frequency": 1.0,
+      "amplitude": 1.0,
+      "phase": 0.0,
+      "oscillator_value": 0.0,
+      "oscillator_time": 0.0,
+      "sim_time": 1.0,
+      "tick": 240,
+      "schema_version": 2
+    }
+  }
+}

@@ -47,7 +47,7 @@ class Window(QMainWindow):
         self.exit_errors=[]; self.verify_report=None; self.force_shutdown=False
         central=QWidget(); outer=QVBoxLayout(central); outer.setContentsMargins(18,14,18,14); outer.setSpacing(12)
         header=QHBoxLayout(); title=QLabel('⚛  ATOMVERSE  /  POINT ENGINE'); title.setObjectName('title')
-        header.addWidget(title); header.addStretch(); header.addWidget(QLabel('MISSION 002  ·  COMPUTATION BEFORE PERCEPTION'))
+        header.addWidget(title); header.addStretch(); header.addWidget(QLabel('COMPUTATION BEFORE PERCEPTION'))
         outer.addLayout(header)
         split=QSplitter(); outer.addWidget(split,1)
         scene=QWidget(); scene_layout=QVBoxLayout(scene); scene_layout.setContentsMargins(0,0,0,0)
@@ -402,9 +402,13 @@ class GUIVerification:
             elif self.stage==13:
                 self.check('pass through wall',s['position'][0]>5.8)
                 QTest.mouseClick(w.stop_button,Qt.LeftButton)
-                w.history.flush(); w.refresh_sessions()
-            elif self.stage==15: w.start_replay()
+                w.refresh_sessions(); self.replay_deadline=time.monotonic()+8
+            elif self.stage==15:
+                if not w.session_picker.currentData() and time.monotonic()<self.replay_deadline: return
+                self.check('committed history session is selectable',bool(w.session_picker.currentData()))
+                w.start_replay(); self.replay_deadline=time.monotonic()+8
             elif self.stage==17:
+                if not w.replay_active and time.monotonic()<self.replay_deadline: return
                 self.check('history replay loads recorded states',w.replay_active and len(w.replay_states)>20)
                 self.check('replay does not mutate live position',w.runtime.read()['simulation_status']=='PAUSED')
                 w.return_live(); w.send({'action':'reset'}); w.focus()
@@ -451,18 +455,24 @@ class GUIVerification:
             elif self.stage==32:
                 self.check('hardware modulation can be disabled',not s['telemetry_mapping']['enabled'] and s['effective_amplitude']==s['amplitude'])
                 w.grab().save(str(self.dest/'mission002-application.png'))
-                if not w.args.verify_ai: self.finish(); return
+                if not (w.args.verify_ai or w.args.verify_ai_unavailable): self.finish(); return
                 self.ai_start_tick=s['tick']; self.ai_start_frames=w.viewport.frames; self.ai_wait_started=time.perf_counter()
                 w.ask_ai()
             elif self.stage==33:
                 if w.ai_pending:
                     if time.perf_counter()-self.ai_wait_started>110: raise AssertionError('AI GUI deadline exceeded')
                     return
+                if w.args.verify_ai_unavailable:
+                    self.check('unavailable AI returns an error without a proposal',not w.proposal and not w.apply_ai.isEnabled() and bool(w.ai_result.toPlainText()))
+                    self.check('engine remains responsive without AI',s['tick']>self.ai_start_tick and not w.runtime.error)
+                    w.send({'action':'teleport','position':[10,5,3]})
+                    self.stage=34
+                    return
                 self.check('real Qwen structured proposal in packaged GUI',bool(w.proposal) and w.proposal['command']=={'action':'teleport','position':(10.,5.,3.)})
                 self.check('simulation and rendering continue during inference',s['tick']>self.ai_start_tick+100 and w.viewport.frames>self.ai_start_frames+20)
                 QTest.mouseClick(w.apply_ai,Qt.LeftButton)
             elif self.stage==35:
-                self.check('reviewed AI command executes through kernel',s['position']==(10.,5.,3.))
+                self.check('direct command works after unavailable AI' if w.args.verify_ai_unavailable else 'reviewed AI command executes through kernel',s['position']==(10.,5.,3.))
                 self.finish(); return
             self.stage+=1
         except Exception as exc:
@@ -476,26 +486,15 @@ class GUIVerification:
         if w.args.verify_ai: w.verify_report['ai_proposal']=w.proposal
         QTimer.singleShot(100,w.shutdown)
 
-def main(argv=None):
-    p=argparse.ArgumentParser(description='One spherical computational point. Native controls require no AI.')
-    default=Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ATOMVERSE-POINT-ENGINE'
-    p.add_argument('--data-dir',type=Path,default=default)
-    p.add_argument('--sim-hz',type=int,default=240); p.add_argument('--record-hz',type=int,default=120); p.add_argument('--render-hz',type=int,default=60)
-    p.add_argument('--no-sql',action='store_true'); p.add_argument('--verify-ui',type=Path)
-    p.add_argument('--verify-ai',action='store_true',help='With --verify-ui, also test the configured real local model')
-    p.add_argument('--keep-running',action='store_true'); p.add_argument('--headless',action='store_true')
-    p.add_argument('--seconds',type=float,default=10); p.add_argument('--command-file',type=Path); p.add_argument('--snapshot-out',type=Path)
-    p.add_argument('--ai-endpoint',default='http://127.0.0.1:11434'); p.add_argument('--ai-model',default='qwen3.8:27b'); p.add_argument('--ai-gpu',type=int,default=8)
-    args=p.parse_args(argv)
-    if not 1<=args.record_hz<=args.sim_hz<=2000 or not 1<=args.render_hz<=144: p.error('Require 1 <= record Hz <= simulation Hz <= 2000 and 1 <= rendering Hz <= 144')
+def run_gui(args):
     args.data_dir.mkdir(parents=True,exist_ok=True)
-    if args.headless:
-        if not 0<args.seconds<=86400: p.error('Headless duration must be 0 < seconds <= 86400')
-        from .headless import run
-        return run(args)
     surface_format(); app=QApplication(sys.argv[:1]); app.setApplicationName('ATOMVERSE POINT ENGINE')
     window=Window(args); window.show(); code=app.exec()
     if window.exit_errors or (window.verify_report and window.verify_report['status']!='PASS'): return 1
     return code
+
+def main(argv=None):
+    from .cli import desktop_main
+    return desktop_main(argv)
 
 if __name__=='__main__': raise SystemExit(main())

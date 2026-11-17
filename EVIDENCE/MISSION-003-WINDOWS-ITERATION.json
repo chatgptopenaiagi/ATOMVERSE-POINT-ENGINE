@@ -1,0 +1,63 @@
+{
+  "repair": "GUI verification now waits for asynchronous session selection and replay completion with an eight-second bound. Removed a synchronous test-only flush while the recorder remained active.",
+  "checks": [
+    {
+      "name": "one primary sphere at origin",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "hardware OpenGL context",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "absolute positive and negative coordinates",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "camera independent; radius and RGBA",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "line reaches destination",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "helical motion changes position",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "pause freezes simulation time and coordinates",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "resume advances point",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "stop at sphere-expanded wall boundary",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "pass through wall",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "history replay loads recorded states",
+      "passed": false,
+      "method": "actual GUI control and runtime observation"
+    }
+  ],
+  "clean_shutdown": true,
+  "error": "AssertionError: history replay loads recorded states",
+  "status": "FAIL"
+}

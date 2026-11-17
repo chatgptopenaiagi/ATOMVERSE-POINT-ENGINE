@@ -1,0 +1,38 @@
+plugins { id 'com.android.application'; id 'com.chaquo.python' }
+def signing = new Properties()
+def signingFile = rootProject.file('../.local/android-signing.properties')
+if (signingFile.exists()) signingFile.withInputStream { signing.load(it) }
+android {
+    namespace 'org.atomverse.pointengine'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'org.atomverse.pointengine'
+        minSdk 24
+        targetSdk 36
+        versionCode 3
+        versionName '0.3.0-alpha.1'
+        ndk { abiFilters 'arm64-v8a' }
+    }
+    signingConfigs {
+        release {
+            if (signingFile.exists()) {
+                storeFile rootProject.file('../.local/atomverse-android.jks')
+                storePassword signing.getProperty('storePassword')
+                keyAlias 'atomverse'
+                keyPassword signing.getProperty('storePassword')
+            }
+        }
+    }
+    buildTypes { release { minifyEnabled false; signingConfig signingConfigs.release } }
+    sourceSets { main { assets.srcDirs += ['../../LICENSES'] } }
+}
+chaquopy {
+    defaultConfig {
+        version '3.14'
+        if (System.getenv('ATOMVERSE_BUILD_PYTHON')) buildPython System.getenv('ATOMVERSE_BUILD_PYTHON')
+    }
+    sourceSets { main {
+        srcDir '../../src'
+        exclude 'main.py', 'atomverse_point/app.py', 'atomverse_point/render.py', 'atomverse_point/projection.py', 'atomverse_point/telemetry.py'
+    } }
+}

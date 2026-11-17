@@ -29,7 +29,7 @@ def run(args):
             if part:
                 try: part.close()
                 except Exception as exc: errors.append(str(exc))
-    result={'version':__version__,'headless':True,'renderer_created':False,'state':runtime.read(),'runtime':runtime.stats(),'history':history.stats(),'errors':errors,'status':'PASS' if not errors and not runtime.error else 'FAIL'}
+    result={'version':__version__,'headless':True,'renderer_created':False,'state':runtime.read(),'runtime':runtime.stats(),'history':history.stats(),'sql_status':sql.status if sql else 'disabled','errors':errors,'status':'PASS' if not errors and not runtime.error else 'FAIL'}
     destination=args.snapshot_out or args.data_dir/'headless-result.json'
     destination.parent.mkdir(parents=True,exist_ok=True); destination.write_text(json.dumps(result,indent=2),encoding='utf-8')
     return 0 if result['status']=='PASS' else 1

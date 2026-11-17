@@ -1,0 +1,309 @@
+{
+  "status": "PASS",
+  "apk_sha256": "2d9eef934c95659e25bdd39279f0aa595c5b6be13e3f4fdff2130e54f31c0160",
+  "apk_bytes": 22583321,
+  "package": "org.atomverse.pointengine",
+  "version": "0.3.0-alpha.1",
+  "native_abi": "arm64-v8a",
+  "device_type": "project-owned Android API 37 x86_64 emulator with libndk_translation ARM64 compatibility",
+  "physical_arm64_device": "NOT TESTED",
+  "install": "PASS",
+  "launch": "PASS",
+  "ui_checks": [
+    {
+      "name": "single entity running",
+      "passed": true
+    },
+    {
+      "name": "absolute teleport",
+      "passed": true
+    },
+    {
+      "name": "relative movement",
+      "passed": true
+    },
+    {
+      "name": "radius and color",
+      "passed": true
+    },
+    {
+      "name": "oscillator configuration",
+      "passed": true
+    },
+    {
+      "name": "pause",
+      "passed": true
+    },
+    {
+      "name": "view switch independent",
+      "passed": true
+    },
+    {
+      "name": "resume",
+      "passed": true
+    },
+    {
+      "name": "recorded replay",
+      "passed": true
+    },
+    {
+      "name": "history committed",
+      "passed": true
+    }
+  ],
+  "touch_method": "ADB taps and camera swipe; native hierarchy for initial controls, framebuffer-inspected transport coordinates on 1080x2400 emulator",
+  "adb_touch_absolute_relative": "PASS",
+  "camera_independence": "PASS",
+  "background_foreground": "PASS",
+  "clean_termination": "PASS",
+  "restart_restore": "PASS",
+  "sqlite": {
+    "integrity": "ok",
+    "events": 14712,
+    "sessions": 9
+  },
+  "python": "3.14.8 (main, Oct  1 2026, 01:13:49) [Clang 18.0.4 (https://android.googlesource.com/toolchain/llvm-project d8003a456",
+  "runtime_during_ui_checks": {
+    "worker_iterations_hz": 119.91646798951572,
+    "worker_cpu_equivalent_percent": 14.683618252386097,
+    "timing_overruns": 0,
+    "error": null,
+    "command_count_measured": 9,
+    "command_latency_p95_ms": 22.5651,
+    "command_latency_max_ms": 22.5651,
+    "mean_kernel_update_us": 89.29565217391304
+  },
+  "conformance": {
+    "status": "PASS",
+    "scenarios": 8,
+    "abs_rel_tolerance": 1e-10,
+    "maximum_absolute_difference": 0.0
+  },
+  "vectors": {
+    "absolute_relative": {
+      "position": [
+        -1,
+        1,
+        -1
+      ],
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 0,
+      "tick": 0,
+      "schema_version": 2
+    },
+    "accelerated": {
+      "position": [
+        1.250000000000012,
+        -1.9999999999999953,
+        2.8750000000000013
+      ],
+      "velocity": [
+        1.5000000000000249,
+        -2,
+        2.750000000000014
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 1,
+      "tick": 240,
+      "schema_version": 2
+    },
+    "line": {
+      "position": [
+        2.999999999999993,
+        -1.9999999999999953,
+        0.9999999999999977
+      ],
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 1,
+      "tick": 240,
+      "schema_version": 2
+    },
+    "circle": {
+      "position": [
+        -0.5857864376269064,
+        1.4142135623730965,
+        0
+      ],
+      "velocity": [
+        -4.442882937438775,
+        4.442882937438775,
+        0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 0.25,
+      "tick": 60,
+      "schema_version": 2
+    },
+    "helix": {
+      "position": [
+        -3.4142135623730887,
+        1.4142135623731014,
+        0.29999999999999943
+      ],
+      "velocity": [
+        -4.44288293741657,
+        -4.442882937405468,
+        0.4000000000004
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 0.75,
+      "tick": 180,
+      "schema_version": 2
+    },
+    "spiral": {
+      "position": [
+        -3.4672465709620797,
+        1.4672465709620925,
+        0
+      ],
+      "velocity": [
+        -4.680201725637545,
+        -4.538780369489626,
+        0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 0.75,
+      "tick": 180,
+      "schema_version": 2
+    },
+    "oscillator": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 2,
+      "amplitude": 3,
+      "phase": 0.25,
+      "oscillator_value": -2.4060759957213196,
+      "oscillator_time": 0.3041666666666668,
+      "sim_time": 0.30416666666666664,
+      "tick": 73,
+      "schema_version": 2
+    },
+    "reflection": {
+      "position": [
+        -0.9999999999999943,
+        0.9999999999999977,
+        0
+      ],
+      "velocity": [
+        -10,
+        1,
+        0
+      ],
+      "radius": 0.5,
+      "color": [
+        0.15,
+        0.65,
+        1,
+        1
+      ],
+      "frequency": 1,
+      "amplitude": 1,
+      "phase": 0,
+      "oscillator_value": 0,
+      "oscillator_time": 0,
+      "sim_time": 1,
+      "tick": 240,
+      "schema_version": 2
+    }
+  },
+  "launch_measurement": "Starting: Intent { cmp=org.atomverse.pointengine/.MainActivity (has extras) }\r\nStatus: ok\r\nLaunchState: COLD\r\nActivity: org.atomverse.pointengine/.MainActivity\r\nTotalTime: 2698\r\nWaitTime: 2711\r\nComplete\r\n",
+  "lifecycle": {
+    "background_count": 5,
+    "foreground_count": 5,
+    "paused_tick": 1050,
+    "foreground_tick": 1050
+  },
+  "history_sessions_before": 8,
+  "history_sessions_after": 9
+}

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0-alpha.1 — One kernel, multiple distributions
+
+The core is now an installable pure-Python wheel with a dependency-free headless CLI and public API. Qt, ODBC and telemetry move into optional extras. Windows has a standalone EXE and a portable folder build. Both retain the original kernel, native views, history and optional reviewed Qwen workflow. Missing optional ODBC bindings are reported without an unhandled worker exception.
+
+A native Android control surface embeds the same Python kernel through Chaquopy. Publication is gated on installing and executing the signed ARM64 APK, lifecycle/history tests and numerical comparison. Mission 003 evidence records the final status; build success alone is insufficient. Previous releases and 32 existing local histories are preserved.
+
 ## 0.2.0-alpha.1 — Two worlds, one entity
 
 The original point kernel remains authoritative. The entity can now evolve with its visualization closed, expose a dimensionless oscillator and bounded information state, and support create/delete/restore operations without deleting historical evidence. Sphere, wave, spiral, signal and data views observe the same state. Optional hardware telemetry maps through an explicit bounded formula that can be disabled immediately.

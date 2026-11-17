@@ -202,7 +202,12 @@ class SQLReplicator:
         self.thread.start()
 
     def _run(self):
-        import pyodbc
+        try:
+            import pyodbc
+        except ImportError:
+            self.status='UNAVAILABLE / LOCAL JOURNAL'
+            self.error='Missing optional pyodbc dependency'
+            return
         local=connect_local(self.path); remote=None
         entities=self.table_prefix+'ENTITIES'; sessions_table=self.table_prefix+'SESSIONS'; events=self.table_prefix+'EVENTS'
         try:

@@ -1,6 +1,7 @@
 # Foundation before population
 
 1. Preserve one precise, controllable entity and exact command/history semantics.
+   Distribute one shared kernel through a Windows application, Python API/CLI and execution-verified Android adapter. Broaden real-device Android and Python/OS coverage beyond the explicitly measured configurations.
 2. Provision the dedicated SQL database with an authorized account and benchmark permanent storage separately.
 3. Extend retention/archive tooling, crash-durable command acknowledgement and longer stability tests.
 4. Expand the reviewed Qwen command/evidence suite and measure latency for representative workloads.

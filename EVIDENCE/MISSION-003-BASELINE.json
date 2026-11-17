@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "branch": "main",
+  "commit": "7fff4e1522dfec0181303622381af93acba4903e",
+  "automated_tests": 74,
+  "packaged_gui_checks": 21,
+  "packaged_clean_shutdown": true,
+  "old_release_public": true,
+  "old_release_url": "https://github.com/chatgptopenaiagi/ATOMVERSE-POINT-ENGINE/releases/tag/v0.2.0-alpha.1",
+  "previous_assets": {
+    "ATOMVERSE-POINT-ENGINE-0.2.0-alpha.1-windows-x64.zip": "sha256:5ef19b427618c9a0a23987ad4cb6d6bed5a949518892a636dfdbbd82110f325c",
+    "MISSION-002-FINAL-ACCEPTANCE.json": "sha256:8c3efa82199c76146258c72831762db87bdd4e36b9b2232c96d989fc14fb57c5",
+    "MISSION-002-PACKAGE.json": "sha256:ec7b02e5cef79c3ce05eb9a2d94f8893c79ce43388ea2e57e843feb39478ac3d",
+    "SHA256SUMS.txt": "sha256:8793d1004784a58152be1933e907f786f9edc8c5bc879ebe2763f8c1c0a86db1"
+  },
+  "old_executable_sha256": "d0c7e8302773a41a3da2305758cea79ed3fe2019c415e519104fbfa37545540b",
+  "existing_local_histories_snapshotted": 32,
+  "AGENTS.md": "not present in project or parent directories",
+  "kernel_schema": 2,
+  "dedicated_sql": "previous permission limitation; recovery will be rechecked",
+  "ai": "existing loopback Ollama adapter retained; current release will be reverified"
+}

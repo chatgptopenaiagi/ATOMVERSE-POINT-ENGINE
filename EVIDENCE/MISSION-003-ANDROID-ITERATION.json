@@ -1,0 +1,44 @@
+{
+  "error": "java.lang.AssertionError: recorded replay",
+  "finding": "Replay completed asynchronously after the fixed-delay assertion; replace with a bounded completion wait.",
+  "checks": [
+    {
+      "name": "single entity running",
+      "passed": true
+    },
+    {
+      "name": "absolute teleport",
+      "passed": true
+    },
+    {
+      "name": "relative movement",
+      "passed": true
+    },
+    {
+      "name": "radius and color",
+      "passed": true
+    },
+    {
+      "name": "oscillator configuration",
+      "passed": true
+    },
+    {
+      "name": "pause",
+      "passed": true
+    },
+    {
+      "name": "view switch independent",
+      "passed": true
+    },
+    {
+      "name": "resume",
+      "passed": true
+    },
+    {
+      "name": "recorded replay",
+      "passed": false
+    }
+  ],
+  "status": "FAIL",
+  "observed_replay_when_report_written": true
+}

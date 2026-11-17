@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "mission": "003",
+  "version": "0.3.0-alpha.1",
+  "automated_tests_passed": 78,
+  "windows_standalone": "PASS",
+  "windows_portable": "PASS",
+  "windows_gui_checks_per_build": 25,
+  "wheel_install_cli_uninstall": "PASS",
+  "wheel_tested_python": [
+    "3.14.9",
+    "3.15.2"
+  ],
+  "wheel_tests_per_environment": 78,
+  "android_arm64_apk": "PASS on compatible emulator",
+  "android_physical_device": "NOT TESTED",
+  "android_lifecycle_touch_history": "PASS",
+  "cross_platform_scenarios": 8,
+  "numerical_abs_rel_tolerance": 1e-10,
+  "previous_release_artifacts": "PASS: byte-identical",
+  "existing_sqlite_histories_preserved": 32,
+  "existing_sqlite_integrity": "PASS",
+  "real_qwen_cases_passed": 3,
+  "real_sql_recovery": "PASS: isolated temporary resources",
+  "dedicated_sql_database": "UNAVAILABLE: provisioning permission required",
+  "linux_macos_execution": "NOT TESTED",
+  "artifact_sha256": {
+    "standalone_exe": "ddfa95177e3b864fa13e1d342221c2cbad2414ba15e0f4263375e314252ec862",
+    "portable_exe": "c45c10e93023f022c5fc8d57c19986eaf367a5af807c5ad242453313060d4968",
+    "wheel": "1aa153fdf016ee601155139ff6bed0e4ffb7b14253dbd7468ff1d05507914a7b",
+    "android_apk": "2d9eef934c95659e25bdd39279f0aa595c5b6be13e3f4fdff2130e54f31c0160"
+  },
+  "limits": [
+    "Android verification uses ARM64 translation on an API 37 emulator, not a physical ARM64 phone.",
+    "Windows is unsigned. Android uses a project-local signing key; no key is published.",
+    "No Android SQL replication, hardware telemetry mapping or AI UI is included.",
+    "The wheel needs Python; GUI, SQL and telemetry remain optional extras.",
+    "Bounded performance observations are not indefinite throughput or hard-real-time guarantees."
+  ],
+  "source_sha256": {
+    "src/atomverse_point/__init__.py": "bbbf44fc13107e323efc7c0d1b4acf73914ba86aeab68a8df9bcbff949d2a42e",
+    "src/atomverse_point/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/atomverse_point/ai.py": "6b4f3fefcdc03c73c1e7a627aab3c4a16c54c91a7bbb32de0e5903cc1da277e7",
+    "src/atomverse_point/app.py": "39f205e7e91adfd8f2d5735aefef4c391c141b23b35709b0b009054d42d44b94",
+    "src/atomverse_point/cli.py": "43a019d69af10a28bd5ab6fa2422bf9ee635d2ca8b9149289356e8057d9ab502",
+    "src/atomverse_point/conformance.py": "6e7ca1625481ed50081864cd24284dddbadc39f2a1fa4f8c85fe654259ce2426",
+    "src/atomverse_point/headless.py": "efc31e444c2c3a5e220974150b8a82cd3143f70f4af7e4f75b44d9cc1190aedb",
+    "src/atomverse_point/history.py": "5b9619128db9735092e9ed44af2a257a8cc00a23b692360df5b8fc9d1f3e6d95",
+    "src/atomverse_point/kernel.py": "c0f569f0d6ca00f42d2282ee2a46387fd6743bba939f414a1452dcf90e04e24f",
+    "src/atomverse_point/model.py": "970bce99db93d2aaa5b7f4d4bb679cac41def749b229fdc8e10d852c6e41f3b6",
+    "src/atomverse_point/oscillator.py": "748d45a083b3197211463eb1cf0ec4abdc56712e74973eebf6553f8a590efb7b",
+    "src/atomverse_point/projection.py": "9356c9b5fb144b31cd733bc1ae23aeac4e3e3e830f9a4832889969f1f2a15823",
+    "src/atomverse_point/render.py": "8e64e1ec3b30aa4ce6e1fee3ceb11beaeb51d91550e0003f541eaa2683355da8",
+    "src/atomverse_point/runtime.py": "e390e016233eb195679ed1c8650bec259ebf6d902f763cc42182f4d197ec1696",
+    "src/atomverse_point/telemetry.py": "07fbf6270ff06561cb93c3abcab9b137029ec31c9eb55f0f5653af19467d893c",
+    "src/main.py": "1451af26c5b414c833f2ec40a1944eb52a31141413926aa1eec292a5bb3157dc"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "error": null,
+  "checks": [
+    {
+      "name": "one primary sphere at origin",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "hardware OpenGL context",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "absolute positive and negative coordinates",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "camera independent; radius and RGBA",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "line reaches destination",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "helical motion changes position",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "pause freezes simulation time and coordinates",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "resume advances point",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "stop at sphere-expanded wall boundary",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "pass through wall",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "history replay loads recorded states",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "replay does not mutate live position",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "real framebuffer captured",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    }
+  ],
+  "packaged": true,
+  "version": "0.1.0-alpha.1",
+  "renderer": {
+    "graphics": {
+      "vendor": "NVIDIA Corporation",
+      "renderer": "NVIDIA GeForce RTX 3050/PCIe/SSE2",
+      "version": "4.6.0 NVIDIA 621.24"
+    },
+    "frames": 418,
+    "average_fps": 46.96825846887813,
+    "mean_cpu_paint_ms": 3.5218389952658624
+  },
+  "runtime": {
+    "worker_iterations_hz": 240.0010526091152,
+    "worker_cpu_equivalent_percent": 1.8350395594660833,
+    "timing_overruns": 0,
+    "error": null
+  },
+  "recording": {
+    "session_id": "d5c13e95-168d-4192-be1c-51324805b499",
+    "written": 803,
+    "samples_written": 732,
+    "dropped_samples": 0,
+    "queue_depth": 7,
+    "batches": 157,
+    "events_per_second": 89.81305842498402,
+    "last_commit_ms": 1.1999000016658101,
+    "error": null,
+    "payload_bytes": 329372
+  },
+  "rss_bytes": 248422400,
+  "sql_status": "OFFLINE / LOCAL JOURNAL",
+  "sql_rows": 0,
+  "clean_shutdown": true,
+  "shutdown_errors": []
+}

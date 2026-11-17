@@ -1,0 +1,7 @@
+{
+  "measured": true,
+  "cpp_pass": true,
+  "exit_code": 0,
+  "cuda_pass": true,
+  "raw_log_private": ".local/native-toolchain.log"
+}

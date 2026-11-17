@@ -1,0 +1,23 @@
+[project]
+name = "atomverse-point-engine"
+version = "0.1.0a1"
+description = "One precise, controllable, observable spherical computational entity"
+requires-python = ">=3.11"
+dependencies = ["PySide6>=6.8,<7", "pyodbc>=5.2,<6", "psutil>=7,<8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pyinstaller>=6.16,<7"]
+
+[project.scripts]
+atomverse-point-engine = "atomverse_point.app:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

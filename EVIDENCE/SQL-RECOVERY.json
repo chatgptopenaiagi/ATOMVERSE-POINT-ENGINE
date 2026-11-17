@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "method": "actual local SQL Server; isolated global temporary tables; real connection failure followed by recovery",
+  "connection_failed": true,
+  "local_events_while_offline": 1003,
+  "recovered_rows": 1003,
+  "recovery_seconds": 2.2117054000009375,
+  "idempotent_retry_count": 1003,
+  "last_xyz": [
+    9.999999999999831,
+    19.999999999999662,
+    30.00000000000038
+  ],
+  "datetime2_roundtrip": "2026-11-17 15:07:14.541531",
+  "utc_ns_preserved": true,
+  "batches": 16,
+  "limitation": "This verifies the real replication and retry path in tempdb. The dedicated persistent database remains unprovisioned if CREATE DATABASE permission is absent."
+}

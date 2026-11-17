@@ -1,0 +1,130 @@
+{
+  "measured": true,
+  "sql_server_available": true,
+  "dedicated_database_available": false,
+  "tests": [
+    {
+      "requested_hz": 120,
+      "wall_seconds": 3.0008463000012853,
+      "ticks": 360,
+      "actual_ticks_per_second": 119.96615754690463,
+      "simulation_seconds": 3.0,
+      "wall_minus_sim_seconds": 0.0008463000012852717,
+      "samples_written": 361,
+      "dropped": 0,
+      "journal_events_per_second": 121.29911485298133,
+      "batch_count": 85,
+      "replay_seconds": 0.008404399999562884,
+      "replayed_states": 362,
+      "rss_growth_bytes": 475136,
+      "runtime": {
+        "worker_iterations_hz": 116.37556826835386,
+        "worker_cpu_equivalent_percent": 2.0149459849263236,
+        "timing_overruns": 0,
+        "error": null
+      },
+      "file_bytes": 299008
+    },
+    {
+      "requested_hz": 240,
+      "wall_seconds": 3.0011059000025853,
+      "ticks": 718,
+      "actual_ticks_per_second": 239.24513959983267,
+      "simulation_seconds": 2.9916666666666667,
+      "wall_minus_sim_seconds": 0.009439233335918562,
+      "samples_written": 719,
+      "dropped": 0,
+      "journal_events_per_second": 240.57798160317435,
+      "batch_count": 40,
+      "replay_seconds": 0.01729259999774513,
+      "replayed_states": 720,
+      "rss_growth_bytes": 2670592,
+      "runtime": {
+        "worker_iterations_hz": 230.9671637392819,
+        "worker_cpu_equivalent_percent": 2.7894078072687805,
+        "timing_overruns": 0,
+        "error": null
+      },
+      "file_bytes": 569344
+    },
+    {
+      "requested_hz": 500,
+      "wall_seconds": 3.0012806999984605,
+      "ticks": 1496,
+      "actual_ticks_per_second": 498.45387670695624,
+      "simulation_seconds": 2.992,
+      "wall_minus_sim_seconds": 0.009280699998460484,
+      "samples_written": 1497,
+      "dropped": 0,
+      "journal_events_per_second": 499.7866410831781,
+      "batch_count": 93,
+      "replay_seconds": 0.026801799998793285,
+      "replayed_states": 1498,
+      "rss_growth_bytes": 3899392,
+      "runtime": {
+        "worker_iterations_hz": 482.3197723992164,
+        "worker_cpu_equivalent_percent": 4.577553166646784,
+        "timing_overruns": 0,
+        "error": null
+      },
+      "file_bytes": 1056768
+    },
+    {
+      "requested_hz": 1000,
+      "wall_seconds": 3.0008379999999306,
+      "ticks": 2989,
+      "actual_ticks_per_second": 996.0551019415474,
+      "simulation_seconds": 2.989,
+      "wall_minus_sim_seconds": 0.011837999999930737,
+      "samples_written": 2990,
+      "dropped": 0,
+      "journal_events_per_second": 997.3880629344434,
+      "batch_count": 96,
+      "replay_seconds": 0.05133860000205459,
+      "replayed_states": 2991,
+      "rss_growth_bytes": 7155712,
+      "runtime": {
+        "worker_iterations_hz": 955.4702895729083,
+        "worker_cpu_equivalent_percent": 7.631739821571277,
+        "timing_overruns": 0,
+        "error": null
+      },
+      "file_bytes": 2068480
+    },
+    {
+      "requested_hz": 2000,
+      "wall_seconds": 3.000720000000001,
+      "ticks": 5997,
+      "actual_ticks_per_second": 1998.5203551147717,
+      "simulation_seconds": 2.9985,
+      "wall_minus_sim_seconds": 0.002220000000001221,
+      "samples_written": 5998,
+      "dropped": 0,
+      "journal_events_per_second": 1999.8533685248865,
+      "batch_count": 76,
+      "replay_seconds": 0.1293264999985695,
+      "replayed_states": 5999,
+      "rss_growth_bytes": 11796480,
+      "runtime": {
+        "worker_iterations_hz": 1718.053473204588,
+        "worker_cpu_equivalent_percent": 12.187854722755025,
+        "timing_overruns": 0,
+        "error": null
+      },
+      "file_bytes": 4132864
+    }
+  ],
+  "server_version": "16.0.1220.3",
+  "can_create_database": false,
+  "dedicated_database_error_sqlstate": "28000",
+  "temporary_table_batch_test": {
+    "rows": 20000,
+    "batch_size": 512,
+    "seconds": 0.8725791999968351,
+    "rows_per_second": 22920.555521003185,
+    "ordered_query_seconds": 0.09176839999781805,
+    "count_verified": true,
+    "scope": "real local SQL Server tempdb temporary table; not durable dedicated engine database or disconnect-recovery proof"
+  },
+  "policy": "240 simulation Hz, 120 recording Hz, 60 render target by default. Three-second headless sweeps are bounded observations, not long-duration guarantees. SQLite journal uses 256 MiB payload budget plus 16 MiB critical reserve; sample gaps are explicit."
+}

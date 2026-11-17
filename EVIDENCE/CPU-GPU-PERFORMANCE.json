@@ -1,0 +1,22 @@
+{
+  "measured": true,
+  "torch": "2.15.0+cu134",
+  "cuda": "13.4",
+  "cudnn": 92600,
+  "gpu": "NVIDIA GeForce RTX 3050",
+  "one_point_math_us": 0.16009200000553392,
+  "one_point_cuda_with_readback_us": 214.47700000135228,
+  "cpu_100000_points_resident_us": 295.6760000233771,
+  "cpu_tensor_device": "cpu",
+  "cuda_100000_points_resident_us": 168.9520000218181,
+  "cuda_tensor_device": "cuda:0",
+  "cudnn_convolution_shape": [
+    1,
+    8,
+    30,
+    30
+  ],
+  "memory_copy_effective_GB_s": 26.834198354069372,
+  "memory_copy_method": "32 MiB numpy copy, 24 repetitions; read+write bytes, cache/OS effects included; not peak DRAM bandwidth",
+  "selected": "CPU scalar math for one point; GPU OpenGL rasterization. CUDA remains optional for measured future batched workloads."
+}

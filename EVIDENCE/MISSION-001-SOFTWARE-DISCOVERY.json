@@ -1,0 +1,33 @@
+{
+  "measured_utc": "2026-11-17T14:47:17.5983140Z",
+  "powershell": "7.7.0",
+  "cuda_compiler": "nvcc: NVIDIA (R) Cuda compiler driver\r\nCopyright (c) 2005-2026 NVIDIA Corporation\r\nBuilt on Sun_Sep_01_02:23:07_Pacific_Standard_Time_2026\r\nCuda compilation tools, release 13.4, V13.4.92\r\nBuild cuda_13.4.r13.4/compiler.38855100_0",
+  "cmake": "cmake version 4.3.1-msvc1",
+  "ninja": "1.13.2",
+  "odbc": [
+    {
+      "Name": "ODBC Driver 17 for SQL Server",
+      "Platform": "32-bit"
+    },
+    {
+      "Name": "ODBC Driver 18 for SQL Server",
+      "Platform": "32-bit"
+    },
+    {
+      "Name": "ODBC Driver 17 for SQL Server",
+      "Platform": "64-bit"
+    },
+    {
+      "Name": "ODBC Driver 18 for SQL Server",
+      "Platform": "64-bit"
+    }
+  ],
+  "sql_service_running": true,
+  "sql_query": "16.0.1220.3                    Enterprise Edition: Core-based Licensing (64-bit)",
+  "source_inspection": [
+    "ATOMVERSE-AI: read only; no changes",
+    "COG: diagnostic history export available; not an engine dependency",
+    "ARX: existing inventory/report interface; not an engine dependency"
+  ],
+  "runtime_verification": "See CPU-GPU-PERFORMANCE, GUI-VERIFICATION, SQL-THROUGHPUT and QWEN-INFERENCE for actual bounded execution."
+}

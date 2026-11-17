@@ -1,0 +1,199 @@
+{
+  "status": "UNAVAILABLE",
+  "model_downloaded": false,
+  "runs": [
+    {
+      "command": {
+        "action": "translate",
+        "delta": [
+          10.0,
+          5.0,
+          3.0
+        ]
+      },
+      "model": "qwen3.8:27b",
+      "classification": "AI_INTERPRETATION",
+      "elapsed_seconds": 55.86324849999801,
+      "eval_count": 21,
+      "eval_duration_ns": 10591879000,
+      "load_duration_ns": 15183104900,
+      "num_gpu_requested": 0,
+      "repeat": 0,
+      "validated_expected_command": false,
+      "tokens_per_second": 1.9826510480340644,
+      "loaded_models": [
+        {
+          "name": "qwen3.8:27b",
+          "model": "qwen3.8:27b",
+          "size": 18015227737,
+          "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen35",
+            "families": [
+              "qwen35"
+            ],
+            "parameter_size": "27.3B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-17T15:59:21.5468575+01:00",
+          "size_vram": 0,
+          "context_length": 2048,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "command": {
+        "action": "translate",
+        "delta": [
+          10.0,
+          5.0,
+          3.0
+        ]
+      },
+      "model": "qwen3.8:27b",
+      "classification": "AI_INTERPRETATION",
+      "elapsed_seconds": 41.441133700001956,
+      "eval_count": 21,
+      "eval_duration_ns": 9606505000,
+      "load_duration_ns": 4819600,
+      "num_gpu_requested": 0,
+      "repeat": 1,
+      "validated_expected_command": false,
+      "tokens_per_second": 2.1860187445902546,
+      "loaded_models": [
+        {
+          "name": "qwen3.8:27b",
+          "model": "qwen3.8:27b",
+          "size": 18015227737,
+          "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen35",
+            "families": [
+              "qwen35"
+            ],
+            "parameter_size": "27.3B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-17T16:00:02.9891527+01:00",
+          "size_vram": 0,
+          "context_length": 2048,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "command": {
+        "action": "translate",
+        "delta": [
+          10.0,
+          5.0,
+          3.0
+        ]
+      },
+      "model": "qwen3.8:27b",
+      "classification": "AI_INTERPRETATION",
+      "elapsed_seconds": 117.21730970000135,
+      "eval_count": 21,
+      "eval_duration_ns": 20236619000,
+      "load_duration_ns": 52679565500,
+      "num_gpu_requested": 8,
+      "repeat": 0,
+      "validated_expected_command": false,
+      "tokens_per_second": 1.037722753983756,
+      "loaded_models": [
+        {
+          "name": "qwen3.8:27b",
+          "model": "qwen3.8:27b",
+          "size": 18219500827,
+          "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen35",
+            "families": [
+              "qwen35"
+            ],
+            "parameter_size": "27.3B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-17T16:02:00.2348351+01:00",
+          "size_vram": 3060761885,
+          "context_length": 2048,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    {
+      "command": {
+        "action": "translate",
+        "delta": [
+          10.0,
+          5.0,
+          3.0
+        ]
+      },
+      "model": "qwen3.8:27b",
+      "classification": "AI_INTERPRETATION",
+      "elapsed_seconds": 13.574806299999182,
+      "eval_count": 21,
+      "eval_duration_ns": 9210964000,
+      "load_duration_ns": 3641000,
+      "num_gpu_requested": 8,
+      "repeat": 1,
+      "validated_expected_command": false,
+      "tokens_per_second": 2.2798916595483383,
+      "loaded_models": [
+        {
+          "name": "qwen3.8:27b",
+          "model": "qwen3.8:27b",
+          "size": 18219500827,
+          "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen35",
+            "families": [
+              "qwen35"
+            ],
+            "parameter_size": "27.3B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-17T16:02:13.8111801+01:00",
+          "size_vram": 3060761885,
+          "context_length": 2048,
+          "runner": "llamacpp"
+        }
+      ]
+    }
+  ],
+  "all_blobs_present": true,
+  "total_blob_bytes": 17741873395,
+  "model": "qwen3.8:27b",
+  "details": {
+    "parent_model": "qwen3.8:27b-q4_K_M",
+    "format": "gguf",
+    "family": "qwen35",
+    "families": [
+      "qwen35"
+    ],
+    "parameter_size": "27.3B",
+    "quantization_level": "Q4_K_M",
+    "runner": "llamacpp"
+  },
+  "architecture_metadata": {
+    "general.architecture": "qwen35",
+    "general.file_type": 15,
+    "general.parameter_count": 27320697856,
+    "qwen35.block_count": 65,
+    "qwen35.context_length": 262144,
+    "qwen35.embedding_length": 5120
+  },
+  "expected_30b_found": false,
+  "limitation": "Existing model is qwen3.8:27b, not the requested 30B. Measured short-command results do not establish general planning accuracy.",
+  "owned_server_stopped": true
+}

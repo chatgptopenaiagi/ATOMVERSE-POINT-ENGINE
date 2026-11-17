@@ -1,0 +1,188 @@
+{
+  "status": "PARTIAL",
+  "model": "qwen3.8:27b",
+  "model_downloaded": false,
+  "cases": [
+    {
+      "name": "absolute",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "teleport",
+          "position": [
+            10.0,
+            5.0,
+            3.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 53.64133790000051,
+        "eval_count": 16,
+        "eval_duration_ns": 3995703000,
+        "load_duration_ns": 12881568400
+      }
+    },
+    {
+      "name": "relative",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "translate",
+          "delta": [
+            1.0,
+            -2.0,
+            3.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 41.81132399999842,
+        "eval_count": 20,
+        "eval_duration_ns": 6006907000,
+        "load_duration_ns": 3159700
+      }
+    },
+    {
+      "name": "radius",
+      "pass": false,
+      "error": "Unknown command field",
+      "seconds": 42.18244480000067
+    },
+    {
+      "name": "color",
+      "pass": false,
+      "error": "Unknown command field",
+      "seconds": 51.991836299999704
+    },
+    {
+      "name": "oscillator",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "oscillator",
+          "frequency": 2.0,
+          "amplitude": 3.0,
+          "phase": 0.0,
+          "enabled": true
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 47.33425720000014,
+        "eval_count": 30,
+        "eval_duration_ns": 7926922000,
+        "load_duration_ns": 3626300
+      }
+    },
+    {
+      "name": "collision",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "collision",
+          "mode": "reflect",
+          "restitution": 1.0
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 47.55924760000198,
+        "eval_count": 13,
+        "eval_duration_ns": 6177691000,
+        "load_duration_ns": 3148000
+      }
+    },
+    {
+      "name": "trajectory",
+      "pass": false,
+      "result": {
+        "command": {
+          "action": "oscillator",
+          "frequency": 1.0,
+          "amplitude": 1.0,
+          "phase": 0.0,
+          "enabled": true
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 43.22129109999878,
+        "eval_count": 30,
+        "eval_duration_ns": 7521877000,
+        "load_duration_ns": 3676300
+      }
+    },
+    {
+      "name": "history",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "history_query",
+          "limit": 5
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 40.30664280000201,
+        "eval_count": 11,
+        "eval_duration_ns": 2756350000,
+        "load_duration_ns": 3154300
+      }
+    },
+    {
+      "name": "explanation",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "explain",
+          "explanation": "Oscillator amplitude is a dimensionless parameter, not physical energy.",
+          "evidence_refs": [
+            "current_state"
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 54.25317829999767,
+        "eval_count": 50,
+        "eval_duration_ns": 16054189000,
+        "load_duration_ns": 4147300
+      }
+    }
+  ],
+  "actual_details": {
+    "parent_model": "qwen3.8:27b-q4_K_M",
+    "format": "gguf",
+    "family": "qwen35",
+    "families": [
+      "qwen35"
+    ],
+    "parameter_size": "27.3B",
+    "quantization_level": "Q4_K_M",
+    "runner": "llamacpp"
+  },
+  "loaded_configuration": {
+    "models": [
+      {
+        "name": "qwen3.8:27b",
+        "model": "qwen3.8:27b",
+        "size": 18015227737,
+        "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "27.3B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-17T16:35:39.4288185+01:00",
+        "size_vram": 0,
+        "context_length": 2048,
+        "runner": "llamacpp"
+      }
+    ]
+  },
+  "packaged_gui_exit_code": 1,
+  "packaged_ai_pass": false,
+  "executable_sha256": "68e1a1f8ad8edc541a1becdcdc74ae9f25d25353e6377ed2b8dd51a96d5df0a2",
+  "owned_server_stopped": true
+}

@@ -21,6 +21,7 @@ SQL_CONNECTION = ('DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost;'
 LOCAL_SCHEMA = '''
 CREATE TABLE IF NOT EXISTS schema_migrations(version INTEGER PRIMARY KEY);
 INSERT OR IGNORE INTO schema_migrations VALUES(1);
+INSERT OR IGNORE INTO schema_migrations VALUES(2);
 CREATE TABLE IF NOT EXISTS sessions(session_id TEXT PRIMARY KEY, point_id TEXT NOT NULL,
  created_ns INTEGER NOT NULL, config TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS events(session_id TEXT NOT NULL, seq INTEGER NOT NULL,
@@ -142,12 +143,52 @@ def sessions(path):
     with connect_local(path) as c:
         return c.execute('SELECT session_id,created_ns,config FROM sessions ORDER BY created_ns DESC LIMIT 100').fetchall()
 
+def history_summary(path,session_id,limit=12):
+    if isinstance(limit,bool) or not isinstance(limit,int) or not 1<=limit<=100: raise ValueError('History limit must be 1 to 100')
+    with connect_local(path) as c:
+        rows=c.execute('SELECT seq,kind,tick,sim_time,payload FROM events WHERE session_id=? ORDER BY seq DESC LIMIT ?',(session_id,limit)).fetchall()
+    events=[]
+    for seq,kind,tick,sim,payload in reversed(rows):
+        data=json.loads(payload)
+        item={'event_id':session_id+':'+str(seq),'kind':kind,'tick':tick,'simulation_time':sim}
+        item['values']={k:data[k] for k in ('position','frequency','amplitude','phase','oscillator_value','status','dropped_samples') if k in data}
+        if kind=='command': item['action']=data['command']['action']
+        events.append(item)
+    return {'classification':'RECORDED_COMPUTATIONAL_HISTORY','session_id':session_id,'events':events,'selection':'most recent committed events; gaps remain explicit'}
+
 def replay(path,session_id,limit=250000):
     """Exact recorded states; missing samples are never invented or called measurements."""
     with connect_local(path) as c:
         rows=c.execute("SELECT seq,payload FROM events WHERE session_id=? AND kind IN ('sample','state_transition') ORDER BY seq LIMIT ?",(session_id,limit+1)).fetchall()
     if len(rows)>limit: raise ValueError('Replay exceeds bounded session limit; export a smaller session')
-    return [dict(json.loads(r[1]),event_seq=r[0]) for r in rows]
+    from .model import normalize_snapshot
+    return [dict(normalize_snapshot(json.loads(r[1])),event_seq=r[0]) for r in rows]
+
+def exact_reexecution(path,session_id):
+    """Reexecute accepted command and recorded telemetry inputs at their original ticks.
+
+    Returns mathematical states, excluding UTC/monotonic clocks and random command IDs.
+    Sample reconstruction remains a separate API.
+    """
+    from .kernel import Kernel
+    with connect_local(path) as c:
+        session=c.execute('SELECT point_id,config FROM sessions WHERE session_id=?',(session_id,)).fetchone()
+        if not session: raise ValueError('Unknown session')
+        rows=c.execute('SELECT seq,kind,tick,payload FROM events WHERE session_id=? ORDER BY seq',(session_id,)).fetchall()
+    config=json.loads(session[1]); kernel=Kernel(config.get('sim_hz',240),point_id=session[0]); output=[]; command_ids={}
+    for seq,kind,tick,payload in rows:
+        if tick<kernel.state.tick: raise ValueError('Nonmonotonic event ticks cannot be reexecuted')
+        while kernel.state.tick<tick:
+            if kernel.state.simulation_status=='PAUSED': raise ValueError('Missing resume command in event log')
+            kernel.step(); kernel.drain_events()
+        data=json.loads(payload)
+        if kind=='command':
+            command=dict(data['command'])
+            if command['action']=='cancel': command['command_id']=command_ids.get(command['command_id'],command['command_id'])
+            new_id=kernel.submit(command); command_ids[data['command_id']]=new_id; kernel.drain_events()
+        elif kind=='telemetry': kernel.observe_telemetry(data); kernel.drain_events()
+        elif kind=='sample': output.append({'event_seq':seq,'state':kernel.state.snapshot(),'recorded':data})
+    return output
 
 class SQLReplicator:
     def __init__(self,path,connection_string=SQL_CONNECTION,batch_size=512,table_prefix='POINT_'):

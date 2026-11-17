@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0-alpha.1",
+  "mission_status": "PARTIAL",
+  "core_executable_acceptance": "PASS",
+  "recorded_utc": "2026-11-17T15:48:36.379957+00:00",
+  "automated_tests_passed": 74,
+  "packaged_gui_checks_passed": 24,
+  "qwen_cases_passed": 9,
+  "real_qwen_packaged_workflow": "PASS",
+  "real_sql_disconnect_recovery": "PASS (isolated temporary tables)",
+  "persistent_local_history": "PASS",
+  "dedicated_sql_database": "UNAVAILABLE: permission denied",
+  "headless_packaged_execution": "PASS",
+  "schema1_history_compatibility": {
+    "states_read": 771,
+    "schema2_defaults_supplied": true,
+    "original_file_unchanged_in_content": true
+  },
+  "executable_sha256": "d0c7e8302773a41a3da2305758cea79ed3fe2019c415e519104fbfa37545540b",
+  "previous_executable_preserved": true,
+  "source_sha256": {
+    "src/atomverse_point/__init__.py": "6d6cefde8f8650b92f6fd39e360f9fa8280b42b3c4ca87232c58d7785160a0c6",
+    "src/atomverse_point/ai.py": "6b4f3fefcdc03c73c1e7a627aab3c4a16c54c91a7bbb32de0e5903cc1da277e7",
+    "src/atomverse_point/app.py": "296db241082c98f057c77387731bcac25a2cbacbfe976176539aeaba65f7f181",
+    "src/atomverse_point/headless.py": "5247be5ae558074e329035b8ac9cc4dad91575b6c03f8504c0c4d5fcebf5ad22",
+    "src/atomverse_point/history.py": "4103b88a12b5cb2f169032df9d4526dfc81313dcb1eb830227049db9db844812",
+    "src/atomverse_point/kernel.py": "c0f569f0d6ca00f42d2282ee2a46387fd6743bba939f414a1452dcf90e04e24f",
+    "src/atomverse_point/model.py": "970bce99db93d2aaa5b7f4d4bb679cac41def749b229fdc8e10d852c6e41f3b6",
+    "src/atomverse_point/oscillator.py": "748d45a083b3197211463eb1cf0ec4abdc56712e74973eebf6553f8a590efb7b",
+    "src/atomverse_point/projection.py": "9356c9b5fb144b31cd733bc1ae23aeac4e3e3e830f9a4832889969f1f2a15823",
+    "src/atomverse_point/render.py": "8e64e1ec3b30aa4ce6e1fee3ceb11beaeb51d91550e0003f541eaa2683355da8",
+    "src/atomverse_point/runtime.py": "e390e016233eb195679ed1c8650bec259ebf6d902f763cc42182f4d197ec1696",
+    "src/atomverse_point/telemetry.py": "07fbf6270ff06561cb93c3abcab9b137029ec31c9eb55f0f5653af19467d893c",
+    "src/main.py": "54647d8079d1d0a0a6618a0a0e371df27c252856d800c42dc4a14d2faf1b4492"
+  },
+  "limitations": [
+    "Dedicated persistent SQL database not provisioned; no permanent SQL throughput claim.",
+    "Actual installed model is 27.3B, not exactly 30B. General natural-language correctness is not guaranteed; proposals require review.",
+    "Snapshot restore pauses and restores values; original analytic trajectory operations use separate command reexecution.",
+    "Soft real time, bounded queues and retention; abrupt process/OS loss can lose the uncommitted tail.",
+    "Hardware/performance measurements are bounded workstation observations, not indefinite capacity guarantees.",
+    "One entity; independent multi-entity worlds remain deferred."
+  ],
+  "publication_policy": "Publish this tested alpha with explicit PARTIAL classification; no private histories, credentials, inventory paths or model weights."
+}

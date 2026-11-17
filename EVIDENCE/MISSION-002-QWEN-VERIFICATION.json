@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "model": "qwen3.8:27b",
+  "model_downloaded": false,
+  "cases": [
+    {
+      "name": "absolute",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "teleport",
+          "position": [
+            10.0,
+            5.0,
+            3.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 28.688502900000458,
+        "eval_count": 16,
+        "eval_duration_ns": 7762887000,
+        "load_duration_ns": 15327165000
+      }
+    },
+    {
+      "name": "relative",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "translate",
+          "delta": [
+            1.0,
+            -2.0,
+            3.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 10.399486800000886,
+        "eval_count": 14,
+        "eval_duration_ns": 5208081000,
+        "load_duration_ns": 7695800
+      }
+    },
+    {
+      "name": "radius",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "appearance",
+          "radius": 2.0
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 7.998628099998314,
+        "eval_count": 10,
+        "eval_duration_ns": 3019583000,
+        "load_duration_ns": 5827800
+      }
+    },
+    {
+      "name": "color",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "appearance",
+          "color": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 9.0542932999997,
+        "eval_count": 16,
+        "eval_duration_ns": 4357558000,
+        "load_duration_ns": 5811500
+      }
+    },
+    {
+      "name": "oscillator",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "oscillator",
+          "frequency": 2.0,
+          "amplitude": 3.0,
+          "phase": 0.0,
+          "enabled": true
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 13.372952699999587,
+        "eval_count": 24,
+        "eval_duration_ns": 8536348000,
+        "load_duration_ns": 5987100
+      }
+    },
+    {
+      "name": "collision",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "collision",
+          "mode": "reflect",
+          "restitution": 1.0
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 7.674201300000277,
+        "eval_count": 10,
+        "eval_duration_ns": 2920934000,
+        "load_duration_ns": 5283300
+      }
+    },
+    {
+      "name": "trajectory",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "trajectory",
+          "trajectory": {
+            "kind": "helix",
+            "duration": 2.0,
+            "next": "stop",
+            "amplitude": 2.0,
+            "frequency": 0.2,
+            "phase": 0.0,
+            "pitch": 0.4,
+            "growth": 0.1
+          }
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 10.507232100000692,
+        "eval_count": 17,
+        "eval_duration_ns": 5740922000,
+        "load_duration_ns": 6272200
+      }
+    },
+    {
+      "name": "history",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "history_query",
+          "limit": 5
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 8.066016599997965,
+        "eval_count": 11,
+        "eval_duration_ns": 3057213000,
+        "load_duration_ns": 4174300
+      }
+    },
+    {
+      "name": "explanation",
+      "pass": true,
+      "result": {
+        "command": {
+          "action": "explain",
+          "explanation": "Oscillator amplitude is dimensionless, not physical energy, as confirmed by current_state where amplitude is 1.0.",
+          "evidence_refs": [
+            "current_state"
+          ]
+        },
+        "model": "qwen3.8:27b",
+        "classification": "AI_INTERPRETATION",
+        "elapsed_seconds": 21.879920700001094,
+        "eval_count": 42,
+        "eval_duration_ns": 17079697000,
+        "load_duration_ns": 10215900
+      }
+    }
+  ],
+  "actual_details": {
+    "parent_model": "qwen3.8:27b-q4_K_M",
+    "format": "gguf",
+    "family": "qwen35",
+    "families": [
+      "qwen35"
+    ],
+    "parameter_size": "27.3B",
+    "quantization_level": "Q4_K_M",
+    "runner": "llamacpp"
+  },
+  "loaded_configuration": {
+    "models": []
+  },
+  "gpu_layers_requested": 8,
+  "owned_server_stopped": true,
+  "packaged_gui_exit_code": 0,
+  "packaged_ai_pass": true,
+  "executable_sha256": "d0c7e8302773a41a3da2305758cea79ed3fe2019c415e519104fbfa37545540b"
+}

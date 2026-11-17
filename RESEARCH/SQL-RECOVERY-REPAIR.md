@@ -1,0 +1,11 @@
+# SQL recovery: reproduced cause and bounded repair
+
+The failed operation was `cursor.executemany` with `fast_executemany=True` on a parameterized `INSERT ... SELECT ... WHERE NOT EXISTS`. The ODBC driver inferred a 255-wide-character buffer for a JSON payload. A 462-character payload required 924 bytes, exceeding the 510-byte buffer. The exact reproduced exception is `ProgrammingError: ('String data, right truncation: length 924 buffer 510', 'HY000')`.
+
+This was a permanent client binding error for that batch. It was not a lost temporary-table scope, missing commit, failed server recovery or database permission error. The isolated global temporary tables stayed alive through an anchor connection while the replica disconnected and reconnected. The SQL statement itself was valid.
+
+The repair supplies explicit SQL parameter types and the maximum payload size of the entire batch using `setinputsizes`. Longer JSON uses the long wide-character SQL type. IDs, timestamps and typed coordinates also receive explicit types, including nullable coordinate columns. SQL commits precede local replication acknowledgements. Retrying the same `(session_id, seq)` inserts no duplicates.
+
+`scripts/reproduce_sql_binding.py` reproduces the original error and verifies the corrected binding on the actual local SQL Server. `scripts/verify_sql_recovery.py` starts a client against a closed loopback port, records 1,003 local events, reconnects to the real local server, then repeats the whole batch as if an acknowledgement had been lost. It never stops or reconfigures the SQL Server service. Temporary resources disappear when their owning connections close.
+
+The dedicated database is a separate deployment issue: the current Windows login can reach SQL Server 2022 but lacks CREATE DATABASE permission. An authorized SQL administrator can run `scripts/setup-sql.ps1 -Server localhost -RuntimeLogin '<existing Windows or SQL login>'`. The optional runtime-login grant is scoped to the dedicated database; it does not create a server login or modify unrelated databases. Local SQLite WAL history remains operational. No permanent SQL throughput claim is made until that database is provisioned and tested.

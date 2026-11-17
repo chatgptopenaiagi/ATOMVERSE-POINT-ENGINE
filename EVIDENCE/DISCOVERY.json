@@ -1,0 +1,11 @@
+{
+  "hardware": "MISSION-001-HARDWARE-DISCOVERY.json",
+  "software": "MISSION-001-SOFTWARE-DISCOVERY.json",
+  "native_compilation": "NATIVE-TOOLCHAIN.json",
+  "compute": "CPU-GPU-PERFORMANCE.json",
+  "qwen": "MISSION-002-QWEN-VERIFICATION.json",
+  "sql": "MISSION-002-SQL-RECOVERY.json",
+  "new_environments_created": 0,
+  "new_models_downloaded": 0,
+  "unrelated_applications_modified": false
+}

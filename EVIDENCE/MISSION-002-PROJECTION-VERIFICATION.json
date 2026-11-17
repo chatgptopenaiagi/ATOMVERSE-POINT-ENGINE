@@ -1,0 +1,26 @@
+{
+  "method": "actual source application widgets and framebuffer captures; packaged state-independence separately verified",
+  "checks": [
+    {
+      "view": "wave",
+      "state_unchanged": true,
+      "actual_capture_bytes": 30333
+    },
+    {
+      "view": "spiral",
+      "state_unchanged": true,
+      "actual_capture_bytes": 32018
+    },
+    {
+      "view": "signal",
+      "state_unchanged": true,
+      "actual_capture_bytes": 27120
+    },
+    {
+      "view": "data",
+      "state_unchanged": true,
+      "actual_capture_bytes": 18799
+    }
+  ],
+  "status": "PASS"
+}

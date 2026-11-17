@@ -19,6 +19,7 @@ class Viewport(QOpenGLWidget):
         self.yaw=-35.; self.pitch=25.; self.distance=22.; self.target=(0.,0.,0.)
         self.last_mouse=None; self.gl=None; self.gpu_info={}; self.frames=0; self.started=time.perf_counter()
         self.paint_ms=[]; self.trail=[]; self.last_version=-1; self.show_trail=True
+        self.sphere_list=0; self.material_key=None
         self.mesh=[]
         for lat in range(20):
             strip=[]
@@ -35,6 +36,7 @@ class Viewport(QOpenGLWidget):
         self.gl=QOpenGLFunctions_2_1(); ok=self.gl.initializeOpenGLFunctions()
         if not ok: self.gpu_info={'error':'OpenGL 2.1 compatibility functions unavailable'}; return
         gl=self.gl
+        self.sphere_list=gl.glGenLists(1)
         self.gpu_info={'vendor':gl.glGetString(0x1F00),'renderer':gl.glGetString(0x1F01),'version':gl.glGetString(0x1F02)}
         gl.glEnable(0x0B71) # depth test
         gl.glEnable(0x0BE2); gl.glBlendFunc(0x0302,0x0303)
@@ -79,20 +81,25 @@ class Viewport(QOpenGLWidget):
             g.glLineWidth(1.5); g.glColor4f(.3,.8,.9,.55); g.glBegin(3)
             for p in self.trail: g.glVertex3d(*p)
             g.glEnd()
-        if self.state:
+        if self.state and self.state.get('entity_active',True):
             s=self.state; p=s['position']; r=s['radius']; color=s['color']; representation=s['representation']
             g.glPushMatrix(); g.glTranslated(*p)
             if representation!='center':
                 if representation=='wireframe': g.glPolygonMode(0x0408,0x1B01)
                 g.glEnable(0x0B44); g.glCullFace(0x0405)
                 alpha=min(color[3],.35) if representation=='transparent' else color[3]
-                for strip in self.mesh:
-                    g.glBegin(5)
-                    for x,y,z,shade in strip:
-                        light=1. if representation=='luminous' else shade
-                        g.glColor4f(*(min(1,c*light*s['intensity']) for c in color[:3]),alpha)
-                        g.glVertex3d(x*r,y*r,z*r)
-                    g.glEnd()
+                key=(tuple(color),representation,s['intensity'])
+                if key!=self.material_key:
+                    g.glNewList(self.sphere_list,0x1300)
+                    for strip in self.mesh:
+                        g.glBegin(5)
+                        for x,y,z,shade in strip:
+                            light=1. if representation=='luminous' else shade
+                            g.glColor4f(*(min(1,c*light*s['intensity']) for c in color[:3]),alpha)
+                            g.glVertex3d(x,y,z)
+                        g.glEnd()
+                    g.glEndList(); self.material_key=key
+                g.glPushMatrix(); g.glScaled(r,r,r); g.glCallList(self.sphere_list); g.glPopMatrix()
                 g.glDisable(0x0B44); g.glPolygonMode(0x0408,0x1B02)
             g.glDisable(0x0B71)
             for axis in range(3):

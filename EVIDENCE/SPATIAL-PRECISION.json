@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "numeric_type": "IEEE-754 binary64",
+  "verified_test": "test_high_coordinate_precision",
+  "test": "1e-6 displacement at coordinates +/-1e6, absolute tolerance 1e-10",
+  "scope": "Mathematical state; GPU rendering is not guaranteed to preserve this precision at extreme coordinates",
+  "coordinate_bounds": [
+    -1000000000.0,
+    1000000000.0
+  ]
+}

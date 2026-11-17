@@ -1,0 +1,26 @@
+{
+  "method": "real SQL Server, isolated global temporary table, same INSERT SELECT parameter pattern",
+  "status": "PASS",
+  "original_exception": {
+    "class": "ProgrammingError",
+    "args": [
+      "String data, right truncation: length 924 buffer 510",
+      "HY000"
+    ]
+  },
+  "reproduced": true,
+  "fixed_rows": [
+    [
+      1,
+      462
+    ],
+    [
+      2,
+      1000
+    ]
+  ],
+  "root_cause": "ODBC inferred a 255-wide-character parameter buffer for INSERT SELECT; the 462-character value exceeded it. Bind maximum batch payload length and SQL types explicitly.",
+  "temporary_scope_valid": true,
+  "reconnection_was_not_root_cause": true,
+  "classification": "Permanent client parameter-binding error for that batch, repaired in code; not a server outage or permission failure."
+}

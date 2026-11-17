@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "method": "actual local SQL Server; isolated global temporary tables; real connection failure followed by recovery",
+  "connection_failed": true,
+  "local_events_while_offline": 1003,
+  "recovered_rows": 1003,
+  "recovery_seconds": 2.2087023999993107,
+  "idempotent_retry_count": 1003,
+  "last_xyz": [
+    9.999999999999831,
+    19.999999999999662,
+    30.00000000000038
+  ],
+  "datetime2_roundtrip": "2026-11-17 15:23:58.388709",
+  "utc_ns_preserved": true,
+  "batches": 16,
+  "limitation": "This verifies the real replication and retry path in tempdb. The dedicated persistent database remains unprovisioned if CREATE DATABASE permission is absent.",
+  "binding_reproduction": {
+    "method": "real SQL Server, isolated global temporary table, same INSERT SELECT parameter pattern",
+    "status": "PASS",
+    "original_exception": {
+      "class": "ProgrammingError",
+      "args": [
+        "String data, right truncation: length 924 buffer 510",
+        "HY000"
+      ]
+    },
+    "reproduced": true,
+    "fixed_rows": [
+      [
+        1,
+        462
+      ],
+      [
+        2,
+        1000
+      ]
+    ],
+    "root_cause": "ODBC inferred a 255-wide-character parameter buffer for INSERT SELECT; the 462-character value exceeded it. Bind maximum batch payload length and SQL types explicitly.",
+    "temporary_scope_valid": true,
+    "reconnection_was_not_root_cause": true,
+    "classification": "Permanent client parameter-binding error for that batch, repaired in code; not a server outage or permission failure."
+  },
+  "dedicated_database": {
+    "status": "UNAVAILABLE",
+    "reason": "Current SQL login lacks CREATE DATABASE permission; not an engine failure",
+    "fallback": "Verified SQLite WAL local history",
+    "provisioning": "scripts/setup-sql.ps1"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "event_wait_mean_ms": 15.706355000020267,
+  "python_sleep_mean_ms": 4.468954999993002,
+  "requested_delay_ms": 4.166666666666667,
+  "iterations": 120,
+  "method": "actual Windows wall-clock measurements; ordinary machine load",
+  "decision": "Use Python high-resolution sleep in the fixed-step scheduler; bound shutdown polling to 10 ms; no global timer reconfiguration"
+}

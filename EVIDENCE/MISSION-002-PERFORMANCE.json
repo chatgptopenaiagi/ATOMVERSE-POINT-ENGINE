@@ -1,0 +1,125 @@
+{
+  "method": "actual worker and packaged process; no simulated performance results",
+  "rates": [
+    {
+      "requested_hz": 240,
+      "seconds": 3.0134771000011824,
+      "actual_ticks_per_second": 239.92218158874223,
+      "samples": 724,
+      "dropped": 0,
+      "runtime": {
+        "worker_iterations_hz": 239.94461162400955,
+        "worker_cpu_equivalent_percent": 5.187615778255021,
+        "timing_overruns": 0,
+        "error": null,
+        "command_count_measured": 32,
+        "command_latency_p95_ms": 4.6386,
+        "command_latency_max_ms": 4.928,
+        "mean_kernel_update_us": 56.25228215767635
+      },
+      "local_journal": {
+        "session_id": "38d9dff8-d723-43d4-8f7e-d1a94de4ed64",
+        "written": 853,
+        "samples_written": 724,
+        "dropped_samples": 0,
+        "queue_depth": 0,
+        "batches": 95,
+        "events_per_second": 279.9678322539637,
+        "last_commit_ms": 1.1801000000559725,
+        "error": null,
+        "payload_bytes": 768782
+      },
+      "rss_growth_bytes": -618496
+    },
+    {
+      "requested_hz": 1000,
+      "seconds": 3.0147991000012553,
+      "actual_ticks_per_second": 999.7349408783972,
+      "samples": 3015,
+      "dropped": 0,
+      "runtime": {
+        "worker_iterations_hz": 999.7921135635711,
+        "worker_cpu_equivalent_percent": 15.59946377439419,
+        "timing_overruns": 0,
+        "error": null,
+        "command_count_measured": 32,
+        "command_latency_p95_ms": 1.3487,
+        "command_latency_max_ms": 1.606,
+        "mean_kernel_update_us": 44.43447246184473
+      },
+      "local_journal": {
+        "session_id": "eabd09ba-6e1b-4166-95bf-1a824b7b42a0",
+        "written": 3144,
+        "samples_written": 3015,
+        "dropped_samples": 0,
+        "queue_depth": 0,
+        "batches": 101,
+        "events_per_second": 1034.6147067183276,
+        "last_commit_ms": 1.6395999991800636,
+        "error": null,
+        "payload_bytes": 2873547
+      },
+      "rss_growth_bytes": -356352
+    },
+    {
+      "requested_hz": 2000,
+      "seconds": 3.0169284000003245,
+      "actual_ticks_per_second": 1999.3845395864719,
+      "samples": 6033,
+      "dropped": 0,
+      "runtime": {
+        "worker_iterations_hz": 1999.4886586192447,
+        "worker_cpu_equivalent_percent": 26.505002218754186,
+        "timing_overruns": 0,
+        "error": null,
+        "command_count_measured": 32,
+        "command_latency_p95_ms": 0.7702,
+        "command_latency_max_ms": 0.8372,
+        "mean_kernel_update_us": 39.69189453125
+      },
+      "local_journal": {
+        "session_id": "8ee6a423-dd02-4ecf-84c3-6c680cba9021",
+        "written": 6162,
+        "samples_written": 6033,
+        "dropped_samples": 0,
+        "queue_depth": 0,
+        "batches": 95,
+        "events_per_second": 2016.913465804237,
+        "last_commit_ms": 1.6055999985837843,
+        "error": null,
+        "payload_bytes": 5657228
+      },
+      "rss_growth_bytes": -200704
+    }
+  ],
+  "actual_mission001_history_compatibility": {
+    "states_read": 771,
+    "schema2_defaults_supplied": true,
+    "original_file_unchanged_in_content": true
+  },
+  "packaged_headless": {
+    "version": "0.2.0-alpha.1",
+    "headless": true,
+    "renderer_created": false,
+    "status": "PASS",
+    "runtime": {
+      "worker_iterations_hz": 239.63783755968404,
+      "worker_cpu_equivalent_percent": 4.243086843667863,
+      "timing_overruns": 0,
+      "error": null,
+      "command_count_measured": 2,
+      "command_latency_p95_ms": 4.6918,
+      "command_latency_max_ms": 4.6918,
+      "mean_kernel_update_us": 45.62845360824742
+    },
+    "tick": 485,
+    "position": [
+      2.0166666666666617,
+      4.0333333333333234,
+      6.050000000000052
+    ]
+  },
+  "executable_sha256": "d0c7e8302773a41a3da2305758cea79ed3fe2019c415e519104fbfa37545540b",
+  "sql_persistence": "See SQL-RECOVERY and SQL-THROUGHPUT; permanent database not provisioned. Temporary throughput is not permanent-storage throughput.",
+  "status": "PASS"
+}

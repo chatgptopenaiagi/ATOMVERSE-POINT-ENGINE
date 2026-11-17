@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "state_authority": "Binary64 single-entity kernel",
+  "execution": "Independent fixed-step worker; packaged headless path; optional tray persistence",
+  "renderer": "Native Qt/OpenGL NVIDIA GPU verified; observer-only views",
+  "memory": "Bounded async SQLite WAL plus idempotent ODBC SQL replica",
+  "ai": "Loopback Ollama, bounded awareness, action-specific JSON grammar, reviewed proposals, eight GPU layers measured",
+  "compute": "Scalar CPU; CUDA reserved for measured bulk workloads",
+  "classification": "observed telemetry / mathematical simulation / derived computation / AI interpretation",
+  "limitations": [
+    "Dedicated persistent SQL database not provisioned; no permanent SQL throughput claim.",
+    "Actual installed model is 27.3B, not exactly 30B. General natural-language correctness is not guaranteed; proposals require review.",
+    "Snapshot restore pauses and restores values; original analytic trajectory operations use separate command reexecution.",
+    "Soft real time, bounded queues and retention; abrupt process/OS loss can lose the uncommitted tail.",
+    "Hardware/performance measurements are bounded workstation observations, not indefinite capacity guarantees.",
+    "One entity; independent multi-entity worlds remain deferred."
+  ]
+}

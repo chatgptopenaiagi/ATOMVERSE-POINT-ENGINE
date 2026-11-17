@@ -1,0 +1,738 @@
+{
+  "_internal/_bz2.pyd": {
+    "bytes": 36680,
+    "sha256": "80fdaf07ac36df1ab4d0e33d9d79bb571390529c55dd663c73fcabcc81b76818"
+  },
+  "_internal/_ctypes.pyd": {
+    "bytes": 148296,
+    "sha256": "2714d1d929c5f35ae08b70f3ef7d399b73b9748b423926fc612f6b06d9929f52"
+  },
+  "_internal/_decimal.pyd": {
+    "bytes": 176968,
+    "sha256": "635e48f2db29d278676a923123269d6a780388f8d062c2ffdbd913693ae1b76f"
+  },
+  "_internal/_hashlib.pyd": {
+    "bytes": 64328,
+    "sha256": "630a3848bffa82a3694b0fef1d4929e39a343d69311d0fe4b64dea5e7b4e31bd"
+  },
+  "_internal/_lzma.pyd": {
+    "bytes": 48968,
+    "sha256": "a1203c339f20a05672a339f467481850e24484cbcf0ddaa6d5c42e927bc21072"
+  },
+  "_internal/_queue.pyd": {
+    "bytes": 33096,
+    "sha256": "2b899bd562060b694592eb1b00af850c41df4330cdd34a6a13587acba4e4d7d4"
+  },
+  "_internal/_socket.pyd": {
+    "bytes": 87368,
+    "sha256": "7c7e200c791c20770764854cab3c242618b027afe5138c0584bbd78ba4b1d716"
+  },
+  "_internal/_sqlite3.pyd": {
+    "bytes": 123208,
+    "sha256": "f85a01c82fc5d0fee16042ee9aaec9be5f247d7c030ac2afb22f7883cc40d362"
+  },
+  "_internal/_ssl.pyd": {
+    "bytes": 196424,
+    "sha256": "f2078558169b676be95b9ec6fedf6009ea6265c815027a91b4d6b2839c5b2756"
+  },
+  "_internal/_uuid.pyd": {
+    "bytes": 25928,
+    "sha256": "6d1b45e78129075d69166f3fe1a7c21fe915523ec9af393bfee15ce6fd90ff0e"
+  },
+  "_internal/_wmi.pyd": {
+    "bytes": 38216,
+    "sha256": "379ca28be74489414e82b985bbf25b411058da040b01555992c517d3a725c6a9"
+  },
+  "_internal/_zstd.pyd": {
+    "bytes": 64328,
+    "sha256": "b946f9dbea8869fab42aa00a2f45a9b85dda2bf9dc565b98a2aa16648c542b40"
+  },
+  "_internal/api-ms-win-core-console-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "6df76986aec08e89ea037bc5271caaa82c69bd7eefba4fc293f92de1b1213e5e"
+  },
+  "_internal/api-ms-win-core-datetime-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "c541697c3e9086c6483e88d9cc8fe8a2efc74f663da0b0662babc04d3f79000f"
+  },
+  "_internal/api-ms-win-core-debug-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "fed0c40d172de4de52dc2230c5c92fd6bc8e8553619d5bb5240dcc4f025dc8cf"
+  },
+  "_internal/api-ms-win-core-errorhandling-l1-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "cdae6e7d24d4ca4b491d483135740cc60f2dfc74dd2e01779e655b9f8f85a337"
+  },
+  "_internal/api-ms-win-core-fibers-l1-1-0.dll": {
+    "bytes": 21992,
+    "sha256": "cbb6cb7ff25363b07647ea05d01f2881837d50b04bba4debe875a4aa3a307c52"
+  },
+  "_internal/api-ms-win-core-file-l1-1-0.dll": {
+    "bytes": 26088,
+    "sha256": "02c96dde747ea574fecfb93d43dd9829236a1b22f0eb5513c0e0b27b7bdac934"
+  },
+  "_internal/api-ms-win-core-file-l1-2-0.dll": {
+    "bytes": 21976,
+    "sha256": "682968c7640a1d55485b7c10dfdaf520b1e1c73a8be267853e80be893be3fb49"
+  },
+  "_internal/api-ms-win-core-file-l2-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "45a0eb1b83f448054536d3aa628393b7418477897e841c66384ecc7f4f18c2f2"
+  },
+  "_internal/api-ms-win-core-handle-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "9986a39b7f2e067ee7d1f2b3db0b940e2b75900152f099ff41cce8ddd47565e0"
+  },
+  "_internal/api-ms-win-core-heap-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "54b51444c8b6c9342fd20f5a5b0909a906acd0bdc9cf4d70134d5f8cffbe3209"
+  },
+  "_internal/api-ms-win-core-interlocked-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "ff341ef2c2c389d44bbb1c919ff42ec360015985c0dae2ac760ac5acad0cb1d1"
+  },
+  "_internal/api-ms-win-core-libraryloader-l1-1-0.dll": {
+    "bytes": 22008,
+    "sha256": "6cbc929f814d7e931e0f6f510da1696b059c53bf66934a68d218d3342ce4a289"
+  },
+  "_internal/api-ms-win-core-localization-l1-2-0.dll": {
+    "bytes": 21984,
+    "sha256": "3ddbcd067d495845b7134f30bcea031ad558df4acb562b2f3190941913227158"
+  },
+  "_internal/api-ms-win-core-memory-l1-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "bfa2145c3d615540193a41c9f9605018062307e9fcf1665c390f0034178ecb4a"
+  },
+  "_internal/api-ms-win-core-namedpipe-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "4fcb066de08f48a490e7d50417469ab3099b4a7fe318a8845e4ec9b3e3fd52be"
+  },
+  "_internal/api-ms-win-core-processenvironment-l1-1-0.dll": {
+    "bytes": 22008,
+    "sha256": "f3a31997c715dec8a6857d87be217c7acb893839156838ba20b5ef818ad5c9b1"
+  },
+  "_internal/api-ms-win-core-processthreads-l1-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "470e9d04a1aa19c6b84b5b10cb055ff55caabe0f45d63090865c196b66c295f5"
+  },
+  "_internal/api-ms-win-core-processthreads-l1-1-1.dll": {
+    "bytes": 21976,
+    "sha256": "4e57ceffbc2ef0e4dbfb92854756f97d2b34d9e29db16f46c476ed360b92b1cc"
+  },
+  "_internal/api-ms-win-core-profile-l1-1-0.dll": {
+    "bytes": 21992,
+    "sha256": "0a3a017ca780353d56157682edda4cc3a19a236625fe0f2356faf635cd4f6ace"
+  },
+  "_internal/api-ms-win-core-rtlsupport-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "243c00a13c8fd6d764ebf22ec5a93492043949616561697b776fe9f62360665b"
+  },
+  "_internal/api-ms-win-core-string-l1-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "be439f71ed591f8f65b8894e84569cf3cc3363d88536e49bdd998e49e069d0e8"
+  },
+  "_internal/api-ms-win-core-synch-l1-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "83e86bee356668319f4115846ed9a571cdb37cd8a0eb036fc2a960bdeafcb526"
+  },
+  "_internal/api-ms-win-core-synch-l1-2-0.dll": {
+    "bytes": 21976,
+    "sha256": "718bbb66ed24612c40f415ef11f07db287b1bdf0b130667689d1cdce3a1bee29"
+  },
+  "_internal/api-ms-win-core-sysinfo-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "8e28db596d46ca22f16d8825bebc9406cd01d5efe4233a2eaa6b450473741766"
+  },
+  "_internal/api-ms-win-core-timezone-l1-1-0.dll": {
+    "bytes": 21976,
+    "sha256": "b29f3f250eed6d05bc000a1020ca65215838c3733b78293dfca459031df575f8"
+  },
+  "_internal/api-ms-win-core-util-l1-1-0.dll": {
+    "bytes": 21992,
+    "sha256": "4f79b6338f8438e63627b174d5b1bee2d2dcfc40a6119221317fe3f0d8b1e1a0"
+  },
+  "_internal/api-ms-win-crt-conio-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "7320687be8b742cd70ac0e5f1b0a854502063f9b291147785aa7355a38de162d"
+  },
+  "_internal/api-ms-win-crt-convert-l1-1-0.dll": {
+    "bytes": 26080,
+    "sha256": "3550d96592baf95f0be865503d98f47c8c8d4d36b01190589bb7bd08585c739d"
+  },
+  "_internal/api-ms-win-crt-environment-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "167a2b52964458b16aaa166de281e52c35dfe920380c9c7783a06678b665b2ba"
+  },
+  "_internal/api-ms-win-crt-filesystem-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "255c9a44ed1106c673821ed4ef165788d6bcc94b2924d0fa1d36af4fc2eb0b9c"
+  },
+  "_internal/api-ms-win-crt-heap-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "dd4be34d6de584a82f12803b1be98afd48bf2f82e87b8cb77141b41ea6393cd5"
+  },
+  "_internal/api-ms-win-crt-locale-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "93fe93380fae70f12ebe85b92e5326321400861167ee0ac858a81d2f7fa37d4b"
+  },
+  "_internal/api-ms-win-crt-math-l1-1-0.dll": {
+    "bytes": 30184,
+    "sha256": "6ea15153e8948e7fc9e0aee7cfc5cb7b9b8f872f94e6714bc510b9bc7291ad9b"
+  },
+  "_internal/api-ms-win-crt-process-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "d92c5cd5e4e3738ac13e28e55de12e6da1ffda6f8e1c7687e0a0b4092c6b3462"
+  },
+  "_internal/api-ms-win-crt-runtime-l1-1-0.dll": {
+    "bytes": 26104,
+    "sha256": "1aec90818ef928b5b6ca252e2ac3ffe4ecc1f169251eba720d0035dcb22ba322"
+  },
+  "_internal/api-ms-win-crt-stdio-l1-1-0.dll": {
+    "bytes": 26080,
+    "sha256": "13328be331666a312d58b6a1b537f8b9ac8922de02e22ddcd0ec84a550e59715"
+  },
+  "_internal/api-ms-win-crt-string-l1-1-0.dll": {
+    "bytes": 26072,
+    "sha256": "e45dd01a9f6edcf992f3c74c0eb41178851490db9123a4c738497fbf4f73ec0e"
+  },
+  "_internal/api-ms-win-crt-time-l1-1-0.dll": {
+    "bytes": 21984,
+    "sha256": "0cf285ef569249aaa3fb95de1793fc01895f6805ada65d801302f430b62a5153"
+  },
+  "_internal/api-ms-win-crt-utility-l1-1-0.dll": {
+    "bytes": 22000,
+    "sha256": "d2a27ff370b4f5c87e5475573d23ee261825a9cd1dd55ee0551a361f61414209"
+  },
+  "_internal/base_library.zip": {
+    "bytes": 1396401,
+    "sha256": "247f4133cd7403f1ca8192935e58e781167e9fb4fe6dbae15b2a8a694469ca83"
+  },
+  "_internal/charset.dll": {
+    "bytes": 24904,
+    "sha256": "a3ae42aded452a43703db8f00638550efb3a1013cf8267c475cea4c668e3ab8d"
+  },
+  "_internal/ffi.dll": {
+    "bytes": 41288,
+    "sha256": "6792fdc77c477ffbd41e7dd1b08bd07d5989595aaa888cfca1f9884de011ce0d"
+  },
+  "_internal/freetype.dll": {
+    "bytes": 708936,
+    "sha256": "717e8c3262428a780179ca51176f11411102448f875c896fec50f58cb2ad9b3d"
+  },
+  "_internal/gio-2.0-0.dll": {
+    "bytes": 1673544,
+    "sha256": "ddd2bb9d2650e504f7e94a78e858a8b87703d7c7313b2b7749264ee2e7fd4aa4"
+  },
+  "_internal/glib-2.0-0.dll": {
+    "bytes": 1367880,
+    "sha256": "6a3e261c316cfee43608ccd4b7bdcf1974d7abe767754919fe622c3e54f661a5"
+  },
+  "_internal/gmodule-2.0-0.dll": {
+    "bytes": 32072,
+    "sha256": "56488589c7b9fc80ce28f325a5f09f9f6121081162ed089f68c7f2904a3cbbdc"
+  },
+  "_internal/gobject-2.0-0.dll": {
+    "bytes": 344392,
+    "sha256": "b4595bf4ea6084aa06b51e21bcded8b88780befba096887b62ee7c8f14d81b63"
+  },
+  "_internal/graphite2.dll": {
+    "bytes": 143176,
+    "sha256": "29ef1f6877bb1005495797946f922bf80861a86d4ab31eaa96419889ad5f7c93"
+  },
+  "_internal/harfbuzz.dll": {
+    "bytes": 1177416,
+    "sha256": "15c12cca61823c42250a69a83240c46d2517ddd782281d64cf408fa25e156b01"
+  },
+  "_internal/iconv.dll": {
+    "bytes": 1098568,
+    "sha256": "dde13ae784d3b916ccde2e676f7caa8dd96f23d7e20764fe1b0a8de6424dbd0d"
+  },
+  "_internal/icudt78.dll": {
+    "bytes": 33122632,
+    "sha256": "90a3b4848ec5d2f2790b9d95b4c1caf372bf173a50cf66de068ffe3eaebb00c0"
+  },
+  "_internal/icuin78.dll": {
+    "bytes": 3432776,
+    "sha256": "32e073ddef7231f3b80f9dd3dd81de12b7ad170a62c77ec0f4168653e5665621"
+  },
+  "_internal/icuuc78.dll": {
+    "bytes": 2446152,
+    "sha256": "7bd3162f91908cdca121399b96be240f85d6c3a2526bac8e43778c6dd48a503a"
+  },
+  "_internal/intl-8.dll": {
+    "bytes": 22344,
+    "sha256": "4b1f331d64bdf671ad30ee08f4989687b563611ba8330480489397ec4c729c83"
+  },
+  "_internal/jpeg8.dll": {
+    "bytes": 688456,
+    "sha256": "e7c16e1e0330d747aec1cd161f6d54816f71e4172c14f41f76d5a2b2191c93a3"
+  },
+  "_internal/LIBBZ2.dll": {
+    "bytes": 83216,
+    "sha256": "25a4aae35dd89709620106db311af5bca7c868182b961e106a895ae14d2fc98a"
+  },
+  "_internal/libcrypto-3-x64.dll": {
+    "bytes": 7120712,
+    "sha256": "196ab29e5086890ac6b8f55bd97143d4ab028a64bbe68074cdbe8a3db624cbab"
+  },
+  "_internal/liblzma.dll": {
+    "bytes": 201032,
+    "sha256": "ea76baa9358d94799b76850e9f7595dcb74ef73f7ae6efcf322a79a037ba4db2"
+  },
+  "_internal/libmpdec-4.dll": {
+    "bytes": 212808,
+    "sha256": "4e12f3fdd426e11b6d4ec32c74455f68f5898f9d9377f135a022ed2c4aa74dfd"
+  },
+  "_internal/libpng16.dll": {
+    "bytes": 209736,
+    "sha256": "5befe1f2a614da8049da94ef252a9300d1bc75a9b2468750cdbe817f9c60d237"
+  },
+  "_internal/libssl-3-x64.dll": {
+    "bytes": 1306440,
+    "sha256": "936601cd9e4c5cddf68e06e171aad73c22f0fc3e9b371b4c6b4681cec8fcb678"
+  },
+  "_internal/MSVCP140.dll": {
+    "bytes": 557648,
+    "sha256": "8f141b4454fa78db34bc1f28c571b4da0e00cd2c43f7ad0e282f313036826aae"
+  },
+  "_internal/MSVCP140_1.dll": {
+    "bytes": 35952,
+    "sha256": "4d547db5eb3aabfb1bbe25604c37fe1c253fba3bf25fae654d78d7cd44b7dd3d"
+  },
+  "_internal/MSVCP140_2.dll": {
+    "bytes": 280176,
+    "sha256": "8f481c24983fe695e29df1bff55a44072a1c96927322e70844ef5e6a58ecf8d1"
+  },
+  "_internal/pcre2-16.dll": {
+    "bytes": 586056,
+    "sha256": "484ad15cbdd61ead1eeea150c9e56dea6b98d1d24e869a681fd3a2f0f310c81b"
+  },
+  "_internal/pcre2-8.dll": {
+    "bytes": 621896,
+    "sha256": "692d35e332e310b6cf33793f93271bff380ac5f18c4b35c1021cdc81f0904dcd"
+  },
+  "_internal/psutil/_psutil_windows.pyd": {
+    "bytes": 83784,
+    "sha256": "064ea5b04c97aaf74633ea32ad5402f4b102ba69f4282a8a89687c6bc77040a1"
+  },
+  "_internal/pyodbc.cp314-win_amd64.pyd": {
+    "bytes": 147784,
+    "sha256": "8296288a79c3f7002220685ae9f791ff2a44f12962d240eae6e1b95d69971ca6"
+  },
+  "_internal/PySide6/plugins/generic/qtuiotouchplugin.dll": {
+    "bytes": 101704,
+    "sha256": "e08f8328cb180042dbba28e0c0c7a6425200b2a1f7938e7fd2bf1db62e09fc5d"
+  },
+  "_internal/PySide6/plugins/iconengines/qsvgicon.dll": {
+    "bytes": 72008,
+    "sha256": "d6b0a6873f994e812c8e1a82b10151467e36f88b1afd7136c08b13cc2b445079"
+  },
+  "_internal/PySide6/plugins/imageformats/qgif.dll": {
+    "bytes": 47432,
+    "sha256": "d112ac4e8e7ee8debfed5fba61473803749a2ecab7122ad2077b5b2162d1b6b1"
+  },
+  "_internal/PySide6/plugins/imageformats/qico.dll": {
+    "bytes": 46408,
+    "sha256": "dc83b3f3cd130503a527e1fb16d2edea3c4c0a6f5cf5f2cb73b1eec7d8d33dff"
+  },
+  "_internal/PySide6/plugins/imageformats/qjpeg.dll": {
+    "bytes": 64840,
+    "sha256": "5f4ff5f70c1e3efaa0b90afc82067a9adae4e20e4a1dab34248d37e26341e140"
+  },
+  "_internal/PySide6/plugins/imageformats/qpdf.dll": {
+    "bytes": 42312,
+    "sha256": "8b89db77cef9cd8667e79efcbc3f16d2c191392d598a5fb39663e2965f08553e"
+  },
+  "_internal/PySide6/plugins/imageformats/qsvg.dll": {
+    "bytes": 38728,
+    "sha256": "6ee037871f4016fd21af7b907681b71acbe1136731dd57bb46f6f80044e72231"
+  },
+  "_internal/PySide6/plugins/networkinformation/qglib.dll": {
+    "bytes": 33608,
+    "sha256": "c6adaf77ec587b40648d735abafefb6451a064923e7a434b580bc53ed2f89c64"
+  },
+  "_internal/PySide6/plugins/networkinformation/qnetworklistmanager.dll": {
+    "bytes": 69448,
+    "sha256": "4f98b599d65ed8cebe0fd4ae9bacd10f1793646a80c3a74c78793d0801a54479"
+  },
+  "_internal/PySide6/plugins/platforms/qdirect2d.dll": {
+    "bytes": 1087816,
+    "sha256": "df44b71b2659f3ada6783ed58b4ade1336e074e88c7da73693f3ddba48463456"
+  },
+  "_internal/PySide6/plugins/platforms/qminimal.dll": {
+    "bytes": 61768,
+    "sha256": "cc3de758f2dac681e62e06d9508163d8762528e246c2d94b3ba68e0f0958a005"
+  },
+  "_internal/PySide6/plugins/platforms/qoffscreen.dll": {
+    "bytes": 112456,
+    "sha256": "266b0721a6b065f40ca745d5981af335a3ca2564eceecb069201c80f289ecd28"
+  },
+  "_internal/PySide6/plugins/platforms/qwindows.dll": {
+    "bytes": 1008968,
+    "sha256": "cca310b30f2ef1ebc2e3f1331441743f225821cbbc812223d9b8ae0cddd66b5c"
+  },
+  "_internal/PySide6/plugins/styles/qmodernwindowsstyle.dll": {
+    "bytes": 230216,
+    "sha256": "e56ceba349a3a8b71d63f597f21b6b75c13c968f25391a6a70018cbcfa83e805"
+  },
+  "_internal/PySide6/plugins/tls/qcertonlybackend.dll": {
+    "bytes": 105288,
+    "sha256": "fba8629e2a7cecb786cf6bf2eea11648c94fd4933f093d3af11d66762d5da43c"
+  },
+  "_internal/PySide6/plugins/tls/qopensslbackend.dll": {
+    "bytes": 243528,
+    "sha256": "229ef77ac115846899b6074a267a996cd6b7ffccdd8d609b7831a7106229a9f9"
+  },
+  "_internal/PySide6/plugins/tls/qschannelbackend.dll": {
+    "bytes": 264008,
+    "sha256": "706acf8a096d91036b2ebd1d31c4c15b4645865bee7926ec277739a0fd38c784"
+  },
+  "_internal/PySide6/QtCore.cp314-win_amd64.pyd": {
+    "bytes": 3352904,
+    "sha256": "7a7b04e58b57c675a6b0ab2a8f62ebfbac0ddedae590fe5a8318c311e7d3a12a"
+  },
+  "_internal/PySide6/QtGui.cp314-win_amd64.pyd": {
+    "bytes": 3914056,
+    "sha256": "fd6f29d3514001d8fb63b075559459e5addb7ff23a6d5cebe781ba1145fe0d3b"
+  },
+  "_internal/PySide6/QtNetwork.cp314-win_amd64.pyd": {
+    "bytes": 1014600,
+    "sha256": "95939ffd36d24dcd90b20a5b7e301169a8abb6687d51cc8dc6ca2a66278d73d3"
+  },
+  "_internal/PySide6/QtOpenGL.cp314-win_amd64.pyd": {
+    "bytes": 8715592,
+    "sha256": "cf6b6fe00dd923f1a067bfaeebf1154b56b7f5f3206a43d848d7aeabef5ff276"
+  },
+  "_internal/PySide6/QtOpenGLWidgets.cp314-win_amd64.pyd": {
+    "bytes": 122184,
+    "sha256": "21e59a8ed8119923ab7b8c5d87ff9e5f45fa956257005da17c1736e9bccf105f"
+  },
+  "_internal/PySide6/QtTest.cp314-win_amd64.pyd": {
+    "bytes": 183624,
+    "sha256": "961eb79c11be8b825affa78dd9a0178178a1bb84a3686260e14e632127509ff2"
+  },
+  "_internal/PySide6/QtWidgets.cp314-win_amd64.pyd": {
+    "bytes": 4906824,
+    "sha256": "1e8387401aa1ce890d109e01c80649b47f04d7f0579e6d12b4dc25130216623c"
+  },
+  "_internal/pyside6.cp314-win_amd64.dll": {
+    "bytes": 269128,
+    "sha256": "8c2b6b62fde0799033add487a6127b2755e163e11e5f9c3a078dbd112fa948b8"
+  },
+  "_internal/python3.dll": {
+    "bytes": 71496,
+    "sha256": "aad5f65f06ec02ee29556a1f2e6804bc9fae1d3d14ecda03805469330b6320d7"
+  },
+  "_internal/python314.dll": {
+    "bytes": 7200072,
+    "sha256": "413ad02ca9c57877e249f801fc098a5d1cbfbfb8308b0467e4bbf470bb422595"
+  },
+  "_internal/Qt6Core.dll": {
+    "bytes": 6043464,
+    "sha256": "a8d7e460e63833d9cab99ca7a3878151309df060db3fa4f871ace09cb1154e3c"
+  },
+  "_internal/Qt6Gui.dll": {
+    "bytes": 8805704,
+    "sha256": "eaeda15857a3b506ffe7598cf1e24f95ac46ac0e4659a78e5757518a90209cc5"
+  },
+  "_internal/Qt6Network.dll": {
+    "bytes": 1793352,
+    "sha256": "d91556dc5f80ec915c59b1f7b2fd51dc14e5ffe2e1cff6975cfe0111123bffa8"
+  },
+  "_internal/Qt6OpenGL.dll": {
+    "bytes": 1994568,
+    "sha256": "ca44da3b3bd215c843e8b1ed5f2b33a5286ac8fe1aa75cb3e9ab0d7d91134c76"
+  },
+  "_internal/Qt6OpenGLWidgets.dll": {
+    "bytes": 64840,
+    "sha256": "2b439b7d78bedcf09f095b77dc2f1cba2e576b17af41b7cabf27b270bf84d2e1"
+  },
+  "_internal/Qt6Pdf.dll": {
+    "bytes": 4413768,
+    "sha256": "6e31c6fd4c31737f9ef83300a8228baed8a61beb240ca0d0cad6a6dc6b3a1f64"
+  },
+  "_internal/Qt6Svg.dll": {
+    "bytes": 661320,
+    "sha256": "5e28abc1a58325de8e386c79327411b160ec9a37422b8faae458e5974c4210f4"
+  },
+  "_internal/Qt6Test.dll": {
+    "bytes": 395080,
+    "sha256": "60ca56e511e748dcb2802271292dde2f7d16a7cb4a8aee4847b921a1dd9c0673"
+  },
+  "_internal/Qt6Widgets.dll": {
+    "bytes": 6609736,
+    "sha256": "5f90bfd5a138f8c8401739851680c157f9f13e730d4c748706b9dd52c1d2f940"
+  },
+  "_internal/select.pyd": {
+    "bytes": 31560,
+    "sha256": "bff8319ea7acd60f182c4e323d2dd1ce9d7f2aa6e4c7c83b6e2bb247efbe845d"
+  },
+  "_internal/shiboken6/Shiboken.cp314-win_amd64.pyd": {
+    "bytes": 33608,
+    "sha256": "05b8220277e1431d1a1fdd2f4280ff35c6a8a6b8023f9a0ac2ea17b7f4ea5793"
+  },
+  "_internal/shiboken6.cp314-win_amd64.dll": {
+    "bytes": 479048,
+    "sha256": "464c6207ea1d78a758414c2af33669cf63d6236f8aa3277c1a6f8fe54a1e5b67"
+  },
+  "_internal/sqlite3.dll": {
+    "bytes": 1677128,
+    "sha256": "192afb2b8c4df328177ee372989fb2a2e70513d17787fa7879ed478049e05456"
+  },
+  "_internal/ucrtbase.dll": {
+    "bytes": 1123808,
+    "sha256": "fbed69a52fdcf571dd37fe4cc63cb86ed3732b5b998807f14968788027c00754"
+  },
+  "_internal/unicodedata.pyd": {
+    "bytes": 755528,
+    "sha256": "4a9f10e9316c7f065325e55d26f83da12be9c3c123f1bccf4d6c9ef3aab83e17"
+  },
+  "_internal/VCRUNTIME140.dll": {
+    "bytes": 124496,
+    "sha256": "0205071c36c17f1efbd70178c852cb7d49985c484202752b8704b7ac6b184e60"
+  },
+  "_internal/VCRUNTIME140_1.dll": {
+    "bytes": 49744,
+    "sha256": "963e45edd064545962e216c12d68071ced94dc8e11862a18f07f14eb2690a57c"
+  },
+  "_internal/zlib.dll": {
+    "bytes": 102728,
+    "sha256": "a2e123cc624634d08200b4e5ee6a2828d2df88fd9573b5b5fdd9da336f5738a6"
+  },
+  "_internal/zstd.dll": {
+    "bytes": 673608,
+    "sha256": "9c65f8f58e132a83a1da8c018c2d62f774e5a33e9fd511f13941986870662357"
+  },
+  "ARCHITECTURE/AI-AWARENESS.md": {
+    "bytes": 1649,
+    "sha256": "4d28b95027798c9c4e7e3aad900b9129ead973201827e83dfe2f45619870d0e1"
+  },
+  "ARCHITECTURE/ENERGY-FREQUENCY-KERNEL.md": {
+    "bytes": 2325,
+    "sha256": "4a3cd22926674e9359205648bb2d96e3205d8d190f18fcff66fa04f660dc3d2f"
+  },
+  "ARCHITECTURE/PERCEPTUAL-PROJECTION.md": {
+    "bytes": 1205,
+    "sha256": "64ec778e78cc569e61ae6568e4bbe216cf724fb79495a00135d08ceff643e147"
+  },
+  "ARCHITECTURE/REVERSE-PERCEPTION.md": {
+    "bytes": 2194,
+    "sha256": "9fe0e48496b932b4d6e3b976dd8dfa6b864a2d485c4aa47826d064421e4198b8"
+  },
+  "ARCHITECTURE.md": {
+    "bytes": 3940,
+    "sha256": "d1d18d7cc3fac7883aa586414db72160ec48ba8aa640980be876b35e733dbe9e"
+  },
+  "ATOMVERSE-POINT-ENGINE.exe": {
+    "bytes": 2382428,
+    "sha256": "d0c7e8302773a41a3da2305758cea79ed3fe2019c415e519104fbfa37545540b"
+  },
+  "CONCEPT/ORIGINAL-HUMAN-VISION.md": {
+    "bytes": 3876,
+    "sha256": "ab6fc24dc563472a5d13367e0fe5c7c20e2a9cbdbd0237764dad6f411e3da3de"
+  },
+  "CONCEPT/TWO-WORLDS-PRINCIPLE.md": {
+    "bytes": 1625,
+    "sha256": "ad525329f3cf466e5e7a5edac3887ee1227c84ff9c02292db620daf105672688"
+  },
+  "EVIDENCE/ARCHITECTURE-DECISIONS.json": {
+    "bytes": 1310,
+    "sha256": "80ba953aca1bf6e92f032f423b19093df0b8468202ec7d90f76a5b532abc8cb7"
+  },
+  "EVIDENCE/CPU-GPU-PERFORMANCE.json": {
+    "bytes": 799,
+    "sha256": "92f9e4b78667613c10739c994050105bf7b907ab61e8391f9882dac51f039c21"
+  },
+  "EVIDENCE/DISCOVERY.json": {
+    "bytes": 405,
+    "sha256": "1ff5889aa55339b305e93d8c63ca66afad869833914cc82c69feae489532be95"
+  },
+  "EVIDENCE/FINAL-ACCEPTANCE.json": {
+    "bytes": 2966,
+    "sha256": "07fe3890fe7aff0e0261ac86c1e4d864a2888a71636eb51b79529c30a2a962c7"
+  },
+  "EVIDENCE/GUI-VERIFICATION.json": {
+    "bytes": 3007,
+    "sha256": "b2ce89e38bf90e904e15c330cc3fe3ac615e343ed6a9a27d861c91555095850f"
+  },
+  "EVIDENCE/MATHEMATICAL-VERIFICATION.json": {
+    "bytes": 12788,
+    "sha256": "501770dbaef1f6c980a75e5868debc01162ba878e5cc438b87d202c25a51fd60"
+  },
+  "EVIDENCE/MISSION-001-HARDWARE-DISCOVERY.json": {
+    "bytes": 1090,
+    "sha256": "75528f9266b056c6d8ad82598d0275b3a877627c0b54eea4e1fd9d58af882e6c"
+  },
+  "EVIDENCE/MISSION-001-SOFTWARE-DISCOVERY.json": {
+    "bytes": 1282,
+    "sha256": "4b995d69e63637329a4bf06b8f1740f35518fafabfd6642c1138b368c0a8c786"
+  },
+  "EVIDENCE/MISSION-002-BASELINE.json": {
+    "bytes": 2719,
+    "sha256": "787098fe7e89022b510415c78c00dd41707cb40c7e48f04ff31eba8b1b6b8f1e"
+  },
+  "EVIDENCE/MISSION-002-FINAL-ACCEPTANCE.json": {
+    "bytes": 3043,
+    "sha256": "8c3efa82199c76146258c72831762db87bdd4e36b9b2232c96d989fc14fb57c5"
+  },
+  "EVIDENCE/MISSION-002-GUI-VERIFICATION.json": {
+    "bytes": 5706,
+    "sha256": "39091d2ab56dec63215a145ab1a423e481f8b537765e31dec4c48018f0600a45"
+  },
+  "EVIDENCE/MISSION-002-MATHEMATICAL-TESTS.json": {
+    "bytes": 12788,
+    "sha256": "501770dbaef1f6c980a75e5868debc01162ba878e5cc438b87d202c25a51fd60"
+  },
+  "EVIDENCE/MISSION-002-PERFORMANCE.json": {
+    "bytes": 4116,
+    "sha256": "197c2cdfe62734a2e828da658a0ca13250c510c30a964a1f6d7fbfbe8a8c60ec"
+  },
+  "EVIDENCE/MISSION-002-PROJECTION-VERIFICATION.json": {
+    "bytes": 600,
+    "sha256": "c7881f786478811b80a244cc3d16e2ded10aef981553be7b98d4beffa046a814"
+  },
+  "EVIDENCE/MISSION-002-QWEN-BASELINE.json": {
+    "bytes": 4915,
+    "sha256": "720374d04789ac8fed43a8aabb9b39c72dcad8b3d4533b235759509257aaf5d0"
+  },
+  "EVIDENCE/MISSION-002-QWEN-GRAMMAR-ITERATION.json": {
+    "bytes": 5686,
+    "sha256": "95dc2966ffd719920b60e54ffe3fcd6f02c0470303e98fc6f758b5c609ce3c3a"
+  },
+  "EVIDENCE/MISSION-002-QWEN-VERIFICATION.json": {
+    "bytes": 5162,
+    "sha256": "8590ade3bb436d609ee623b72463b0ecf507b5a605a1d42879aee152c288b51c"
+  },
+  "EVIDENCE/MISSION-002-SQL-BINDING-REPRODUCTION.json": {
+    "bytes": 822,
+    "sha256": "c968ea53edaa48b8adaa3c793d42cd1e04cebc5a8a812f113a421f31b25d5b28"
+  },
+  "EVIDENCE/MISSION-002-SQL-RECOVERY.json": {
+    "bytes": 1849,
+    "sha256": "9a9df541e05ebd68d476ec788bfb8d97ab4a86bc4e0424c7cfcd4413d695b2dc"
+  },
+  "EVIDENCE/MISSION-002-TIMING.json": {
+    "bytes": 383,
+    "sha256": "f19dbf1ea48d776919a13da83b4bbab5dde434c045de1784b5526e1d8e67d2a1"
+  },
+  "EVIDENCE/MOTION-VERIFICATION.json": {
+    "bytes": 185,
+    "sha256": "3a6429374b4152c846a97165057661b748b2a5fc6a7558c6ad880e09a42446cb"
+  },
+  "EVIDENCE/NATIVE-TOOLCHAIN.json": {
+    "bytes": 141,
+    "sha256": "057ea50e6283f21e8e45e869dcdc5c63fd7bb6e51cc0669815193093efc57b0e"
+  },
+  "EVIDENCE/QWEN-BASELINE.json": {
+    "bytes": 5763,
+    "sha256": "7e48f1ff627ca7bf5e5f2d440af59f25d4393606af0bc1c43cf9d9295d3e0be7"
+  },
+  "EVIDENCE/QWEN-INFERENCE.json": {
+    "bytes": 5819,
+    "sha256": "f6ffaef1bbbbef5bc2f120811f626c4ee061f0b371081886ea0c41b069c6cf4a"
+  },
+  "EVIDENCE/SCREENSHOTS/application.png": {
+    "bytes": 92475,
+    "sha256": "07195a537dd295cdd6f98864d4aed6af53e120406dc9993f2c93fde9bcfe8f71"
+  },
+  "EVIDENCE/SCREENSHOTS/data.png": {
+    "bytes": 18799,
+    "sha256": "8521c223aaa0a478eb7158c07c17a2ba1359a538d521bf09837c6825c1fc561c"
+  },
+  "EVIDENCE/SCREENSHOTS/signal.png": {
+    "bytes": 27120,
+    "sha256": "21dcea7df59c3a9cccd83e25d8ae5caee157bfd8f6a41a8566a56c96ce580455"
+  },
+  "EVIDENCE/SCREENSHOTS/spiral.png": {
+    "bytes": 32018,
+    "sha256": "1a7bfd1ff3a2bfa94641d4cfd4eac3aa8ab0585b4c39169f1b87a147a3078f2d"
+  },
+  "EVIDENCE/SCREENSHOTS/wave.png": {
+    "bytes": 30333,
+    "sha256": "d10636112fff441e4f3c1831d1e7393f96029f842f58a12ed4c0dcf5d4181e14"
+  },
+  "EVIDENCE/SPATIAL-PRECISION.json": {
+    "bytes": 385,
+    "sha256": "5d52d23b6028f98da44cfa723c7d4085f8c15ab4ecaef97df41ae2bbfc067837"
+  },
+  "EVIDENCE/SQL-RECOVERY.json": {
+    "bytes": 694,
+    "sha256": "75d84f1b02de41b1513592a1bf2704dd5963af2d703d4e5709a157c2b6c43584"
+  },
+  "EVIDENCE/SQL-THROUGHPUT.json": {
+    "bytes": 4524,
+    "sha256": "bca01894b94f0706f4765b1224f21644227bee9437c68f66b1f21a3a0e35eb86"
+  },
+  "LICENSE-DECISION.md": {
+    "bytes": 602,
+    "sha256": "812cd3d72bf589dcb3472a53309cdda752d25c2174063c01d11b7f273162da55"
+  },
+  "LICENSES/GPL-3.0.txt": {
+    "bytes": 35149,
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  "LICENSES/PSUTIL.txt": {
+    "bytes": 1548,
+    "sha256": "b89c063b3786e28e0c0a38f1931db61fed35e69dd2a2966fbecffee0f46c8d10"
+  },
+  "LICENSES/PYINSTALLER.txt": {
+    "bytes": 32604,
+    "sha256": "0598064c7d2718e38d7914a7d08343b2fa008e3bea9ebba2aa7a6ffa5900dd64"
+  },
+  "LICENSES/PYODBC.txt": {
+    "bytes": 868,
+    "sha256": "9859c85770c91b7866b0f769c938e36d64d0260141b529b947b4ead96883eab4"
+  },
+  "LICENSES/PYTHON.txt": {
+    "bytes": 13804,
+    "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231"
+  },
+  "LICENSES/QT-LGPL-3.0.txt": {
+    "bytes": 7651,
+    "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+  },
+  "migrations/001_history.sql": {
+    "bytes": 1921,
+    "sha256": "412bdb4794620430520812a1423830f272f2b87eef728e98cc44a5179eaaea7e"
+  },
+  "migrations/002_entity_state.sql": {
+    "bytes": 530,
+    "sha256": "eed60932f5aafaf72ed9decb7a4b77914832748f4b4114b08f31da11e0f807c0"
+  },
+  "README.md": {
+    "bytes": 5613,
+    "sha256": "c80c9ce0a8a5e4f644f20f4697abb4235183ee5cec474bf4faf723e90209db76"
+  },
+  "RESEARCH/ENGINE-TECHNOLOGY-SELECTION.md": {
+    "bytes": 4377,
+    "sha256": "21c708df583ef187d8e226943b68c79eec8f4e418145b761d9ec939b946681d1"
+  },
+  "RESEARCH/SQL-RECOVERY-REPAIR.md": {
+    "bytes": 2203,
+    "sha256": "b221af1b5b1e7939a5b0c39722c6aed14448a630de3e30dbc711afb742008906"
+  },
+  "ROADMAP.md": {
+    "bytes": 948,
+    "sha256": "f230a190a11aba08db2dfb2d8c0026cff79952f861501224157d001c3e9bcd3a"
+  },
+  "scripts/setup-sql.ps1": {
+    "bytes": 1885,
+    "sha256": "f2fd16a2912a6fee9bc4be192e16a2027a74f35186a5c028262db63e9861fccc"
+  },
+  "SPECIFICATIONS/ATOMVERSE-AI-INTEGRATION.md": {
+    "bytes": 1482,
+    "sha256": "1be82eff92c1fd2baa2ed4e5cb72b996d2ac2cc5fa6406f33b230165adaf3b3f"
+  },
+  "SPECIFICATIONS/MISSION-001.md": {
+    "bytes": 6767,
+    "sha256": "bef37f80bcc56b6066638b58981dc84fca4ec4affb3a1766046e2f82d797fab1"
+  },
+  "THIRD-PARTY-NOTICES.md": {
+    "bytes": 1251,
+    "sha256": "f81f3b37e05b18c380d18505babc6c24e9b37ad21a8e794630134c48f3467850"
+  },
+  "VERSION": {
+    "bytes": 14,
+    "sha256": "09f385c2dd4a2ddaf98ffd057eb3738b3bf007e293dd6e21ce06006cc75c82ca"
+  }
+}

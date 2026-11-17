@@ -15,13 +15,15 @@ from PySide6.QtCore import QTimer, Qt
 from PySide6.QtGui import QColor, QFont
 from PySide6.QtWidgets import (QApplication,QMainWindow,QWidget,QVBoxLayout,QHBoxLayout,QFormLayout,
     QLabel,QPushButton,QDoubleSpinBox,QSpinBox,QComboBox,QColorDialog,QTabWidget,QLineEdit,
-    QPlainTextEdit,QCheckBox,QSplitter,QScrollArea,QGroupBox)
+    QPlainTextEdit,QCheckBox,QSplitter,QScrollArea,QGroupBox,QStackedWidget,QSystemTrayIcon,QMenu,QStyle)
 from . import __version__
 from .ai import propose
-from .history import History,SQLReplicator,replay,sessions
+from .history import History,SQLReplicator,replay,sessions,history_summary
 from .kernel import Kernel
 from .render import Viewport,surface_format
 from .runtime import Runtime
+from .projection import SignalView
+from .telemetry import Telemetry
 
 def spin(value,low=-1e9,high=1e9,decimals=5):
     widget=QDoubleSpinBox(); widget.setRange(low,high); widget.setDecimals(decimals); widget.setValue(value)
@@ -37,19 +39,24 @@ class Window(QMainWindow):
         self.history=History(args.data_dir/'history.db',self.kernel.state.point_id,
                              {'sim_hz':args.sim_hz,'record_hz':args.record_hz,'render_hz':args.render_hz,'version':__version__})
         self.sql=SQLReplicator(self.history.path,os.environ.get('ATOMVERSE_SQL_CONNECTION') or __import__('atomverse_point.history',fromlist=['SQL_CONNECTION']).SQL_CONNECTION) if not args.no_sql else None
-        self.runtime=Runtime(self.kernel,self.history,args.record_hz)
-        self.results=queue.Queue(); self.ai_pending=False; self.proposal=None
+        self.telemetry=Telemetry()
+        self.runtime=Runtime(self.kernel,self.history,args.record_hz,self.telemetry)
+        self.results=queue.Queue(); self.ai_pending=False; self.proposal=None; self.background_tasks=set()
         self.replay_states=[]; self.replay_times=[]; self.replay_start=0.; self.replay_active=False
         self.process=psutil.Process(); self.process.cpu_percent(None); self.last_metrics=0.; self.closing=False
-        self.exit_errors=[]; self.verify_report=None
+        self.exit_errors=[]; self.verify_report=None; self.force_shutdown=False
         central=QWidget(); outer=QVBoxLayout(central); outer.setContentsMargins(18,14,18,14); outer.setSpacing(12)
         header=QHBoxLayout(); title=QLabel('⚛  ATOMVERSE  /  POINT ENGINE'); title.setObjectName('title')
-        header.addWidget(title); header.addStretch(); header.addWidget(QLabel('MISSION 001  ·  ONE POINT FIRST'))
+        header.addWidget(title); header.addStretch(); header.addWidget(QLabel('MISSION 002  ·  COMPUTATION BEFORE PERCEPTION'))
         outer.addLayout(header)
         split=QSplitter(); outer.addWidget(split,1)
         scene=QWidget(); scene_layout=QVBoxLayout(scene); scene_layout.setContentsMargins(0,0,0,0)
         self.coordinates=QLabel(); self.coordinates.setObjectName('coordinates'); scene_layout.addWidget(self.coordinates)
-        self.viewport=Viewport(); scene_layout.addWidget(self.viewport,1)
+        projection_row=QHBoxLayout(); projection_row.addWidget(QLabel('Perceptual representation'))
+        self.projection_choice=QComboBox(); self.projection_choice.addItems(['sphere','wave','spiral','signal','data']); projection_row.addWidget(self.projection_choice); projection_row.addStretch(); scene_layout.addLayout(projection_row)
+        self.views=QStackedWidget(); self.viewport=Viewport(); self.signal_view=SignalView(); self.data_view=QPlainTextEdit(); self.data_view.setReadOnly(True)
+        self.views.addWidget(self.viewport); self.views.addWidget(self.signal_view); self.views.addWidget(self.data_view); scene_layout.addWidget(self.views,1)
+        self.projection_choice.currentTextChanged.connect(self.switch_projection)
         camera=QHBoxLayout()
         for label,attr in [('Grid','grid'),('Axes','axes'),('Wall','wall'),('Movement trail','show_trail')]:
             cb=QCheckBox(label); cb.setChecked(True); cb.toggled.connect(lambda checked,a=attr:setattr(self.viewport,a,checked)); camera.addWidget(cb)
@@ -58,7 +65,14 @@ class Window(QMainWindow):
         self.performance=QLabel('Starting measurement…'); self.performance.setWordWrap(True); scene_layout.addWidget(self.performance)
         split.addWidget(scene)
         self.tabs=QTabWidget(); self.tabs.setMinimumWidth(360); split.addWidget(self.tabs); split.setSizes([950,380])
-        self._controls(); self._paths(); self._history_tab(); self._ai_tab()
+        self._controls(); self._paths(); self._frequency_tab(); self._history_tab(); self._ai_tab()
+        self.keep_running=QCheckBox('Keep mathematical engine running when visualization closes'); self.keep_running.setChecked(args.keep_running)
+        outer.addWidget(self.keep_running)
+        self.tray=QSystemTrayIcon(self.style().standardIcon(QStyle.SP_ComputerIcon),self)
+        self.tray.setToolTip('ATOMVERSE entity engine · running independently of visualization')
+        tray_menu=QMenu(self); tray_menu.addAction('Show visualization',self.showNormal); tray_menu.addAction('Stop engine and quit',self.shutdown)
+        self.tray.setContextMenu(tray_menu); self.tray.activated.connect(lambda reason:self.showNormal() if reason==QSystemTrayIcon.Trigger else None)
+        QApplication.instance().setQuitOnLastWindowClosed(False)
         self.notice=QLabel('Commands act on one mathematical point. The sphere is its visible representation.'); self.notice.setWordWrap(True)
         outer.addWidget(self.notice); self.setCentralWidget(central)
         self.setStyleSheet('''
@@ -74,7 +88,7 @@ class Window(QMainWindow):
             QScrollArea { border:0; }
         ''')
         QTimer.singleShot(100,self.runtime.start)
-        self.timer=QTimer(self); self.timer.timeout.connect(self.refresh); self.timer.start(max(1,round(1000/args.render_hz)))
+        self.timer=QTimer(self); self.timer.setTimerType(Qt.PreciseTimer); self.timer.timeout.connect(self.refresh); self.timer.start(max(1,round(1000/args.render_hz)))
         self.refresh_sessions()
         if args.verify_ui:
             self.verifier=GUIVerification(self,args.verify_ui)
@@ -154,12 +168,53 @@ class Window(QMainWindow):
         self.session_picker=QComboBox(); layout.addWidget(self.session_picker)
         self.row(layout,self.button('Refresh sessions',self.refresh_sessions),self.button('Replay selected',self.start_replay))
         self.live_button=self.button('Return to live point',self.return_live); layout.addWidget(self.live_button)
+        self.restore_button=self.button('Restore displayed recorded state',self.restore_displayed); layout.addWidget(self.restore_button)
+        self.row(layout,self.button('Create entity',lambda:self.send({'action':'create'})),self.button('Delete active entity',lambda:self.send({'action':'delete'})))
         self.replay_label=QLabel('LIVE · local journal records automatically'); self.replay_label.setWordWrap(True); layout.addWidget(self.replay_label)
         self.projection_status=QLabel(); self.projection_status.setWordWrap(True); layout.addWidget(self.projection_status)
         self.cancel_id=QLineEdit(); self.cancel_id.setPlaceholderText('Projection command UUID')
         layout.addWidget(self.cancel_id); layout.addWidget(self.button('Cancel active / scheduled command',lambda:self.send({'action':'cancel','command_id':self.cancel_id.text()})))
         note=QLabel('Recording and simulation run independently of rendering. Replay displays exact recorded samples. Capture gaps are counted and journaled.\n\nSimulation / render / capture rates can be set at launch with --sim-hz, --render-hz and --record-hz.\n\nTrail: historical positions of this one point. Connected independent points remain a future experiment.')
         note.setWordWrap(True); layout.addWidget(note); layout.addStretch()
+
+    def _frequency_tab(self):
+        layout=self.tab('Frequency'); form=QFormLayout()
+        self.osc_enabled=QCheckBox('Evolve oscillator'); self.osc_frequency=spin(1,0,1000); self.osc_amplitude=spin(1,0,1e6); self.osc_phase=spin(0,-1e6,1e6)
+        form.addRow(self.osc_enabled); form.addRow('Frequency · cycles / sim second',self.osc_frequency); form.addRow('Amplitude · dimensionless',self.osc_amplitude); form.addRow('Phase · radians',self.osc_phase)
+        layout.addLayout(form); self.osc_apply=self.button('Apply oscillator',self.apply_oscillator); layout.addWidget(self.osc_apply)
+        self.osc_status=QLabel(); self.osc_status.setWordWrap(True); layout.addWidget(self.osc_status)
+        self.hardware_enabled=QCheckBox('Observe hardware telemetry (opt in)'); self.hardware_enabled.toggled.connect(lambda v:setattr(self.telemetry,'enabled',v)); layout.addWidget(self.hardware_enabled)
+        mapping_group=QGroupBox('Hardware → simulated amplitude'); mapping_form=QFormLayout(mapping_group)
+        self.mapping_enabled=QCheckBox('Enable bounded modulation'); mapping_form.addRow(self.mapping_enabled)
+        self.mapping_metric=QComboBox(); self.mapping_metric.addItems(['cpu_utilization','gpu_utilization','gpu_power_watts','cpu_clock_mhz','gpu_clock_mhz','memory_utilization']); mapping_form.addRow('Observed metric',self.mapping_metric)
+        self.mapping_input_min=spin(0); self.mapping_input_max=spin(100); self.mapping_amp_min=spin(0,0,1e6); self.mapping_amp_max=spin(2,0,1e6)
+        for name,widget in [('Input minimum',self.mapping_input_min),('Input maximum',self.mapping_input_max),('Output amplitude minimum',self.mapping_amp_min),('Output amplitude maximum',self.mapping_amp_max)]: mapping_form.addRow(name,widget)
+        mapping_form.addRow(self.button('Apply mapping',self.apply_mapping)); self.disable_mapping=self.button('Disable modulation immediately',self.disable_modulation); mapping_form.addRow(self.disable_mapping); layout.addWidget(mapping_group)
+        self.telemetry_label=QLabel('Hardware observation disabled'); self.telemetry_label.setWordWrap(True); layout.addWidget(self.telemetry_label)
+        self.info_text=QPlainTextEdit('{}'); self.info_text.setMaximumHeight(70); layout.addWidget(QLabel('Information state · bounded JSON')); layout.addWidget(self.info_text); layout.addWidget(self.button('Apply information state',self.apply_information))
+        label=QLabel('A·sin(2πft + phase) is a mathematical signal. Its amplitude is not physical energy. Hardware modulation is an inspectable numerical mapping.'); label.setWordWrap(True); layout.addWidget(label); layout.addStretch()
+
+    def apply_oscillator(self): self.send({'action':'oscillator','frequency':self.osc_frequency.value(),'amplitude':self.osc_amplitude.value(),'phase':self.osc_phase.value(),'enabled':self.osc_enabled.isChecked()})
+    def apply_mapping(self):
+        enabled=self.mapping_enabled.isChecked()
+        if enabled: self.hardware_enabled.setChecked(True)
+        self.send({'action':'mapping','enabled':enabled,'metric':self.mapping_metric.currentText(),'input_min':self.mapping_input_min.value(),'input_max':self.mapping_input_max.value(),'amplitude_min':self.mapping_amp_min.value(),'amplitude_max':self.mapping_amp_max.value()})
+    def disable_modulation(self):
+        self.mapping_enabled.setChecked(False)
+        try: self.runtime.submit({'action':'mapping','enabled':False})
+        except Exception as exc: self.notice.setText(str(exc))
+    def apply_information(self):
+        try: self.send({'action':'information','information_state':json.loads(self.info_text.toPlainText())})
+        except ValueError as exc: self.notice.setText('Rejected: '+str(exc))
+    def switch_projection(self,name):
+        if name=='sphere': self.views.setCurrentIndex(0)
+        elif name=='data': self.views.setCurrentIndex(2)
+        else: self.signal_view.mode=name; self.views.setCurrentIndex(1)
+    def restore_displayed(self):
+        if not self.replay_active: self.notice.setText('Select a recorded session and start replay before restoring.'); return
+        state=dict(self.viewport.state); state.pop('event_seq',None)
+        self.return_live(); self.send({'action':'restore','state':state})
+    def shutdown(self): self.force_shutdown=True; self.close()
 
     def _ai_tab(self):
         layout=self.tab('AI')
@@ -198,6 +253,8 @@ class Window(QMainWindow):
     def focus(self): self.viewport.target=tuple(self.viewport.state['position']); self.viewport.distance=max(5,self.viewport.state['radius']*5)
 
     def background(self,name,fn):
+        if name in self.background_tasks or self.closing: return
+        self.background_tasks.add(name)
         def work():
             try: result=fn(); self.results.put((name,result,None))
             except Exception as exc: self.results.put((name,None,f'{type(exc).__name__}: {exc}'))
@@ -216,23 +273,34 @@ class Window(QMainWindow):
         self.ai_pending=True; self.ai_button.setEnabled(False); self.apply_ai.setEnabled(False)
         self.ai_result.setPlainText('Waiting for local Qwen… simulation continues independently.')
         text=self.ai_text.toPlainText(); state=self.runtime.read(); endpoint=self.ai_endpoint.text(); model=self.ai_model.text(); gpu=self.ai_gpu.value()
-        self.background('ai',lambda:propose(text,state,endpoint,model,gpu))
+        telemetry=self.telemetry.read() if self.telemetry.enabled else None
+        def interpret():
+            context={'history':history_summary(self.history.path,self.history.session_id,3)}
+            if telemetry: context['hardware_telemetry']={k:telemetry[k] for k in ('classification','values','units','fresh')}
+            return propose(text,state,endpoint,model,gpu,context=context)
+        self.background('ai',interpret)
     def apply_proposal(self):
-        if self.proposal: self.send(self.proposal['command']); self.apply_ai.setEnabled(False)
+        if self.proposal:
+            command=self.proposal['command']
+            if command['action']=='history_query': self.background('history_query',lambda:history_summary(self.history.path,self.history.session_id,command['limit']))
+            elif command['action']!='explain': self.send(command)
+            self.apply_ai.setEnabled(False)
 
     def refresh(self):
         while True:
             try: name,result,error=self.results.get_nowait()
             except queue.Empty: break
+            self.background_tasks.discard(name)
             if name=='ai':
                 self.ai_pending=False; self.ai_button.setEnabled(True)
                 self.ai_result.setPlainText(error or json.dumps(result,indent=2))
-                self.proposal=result; self.apply_ai.setEnabled(not error)
+                self.proposal=result; self.apply_ai.setEnabled(not error and result['command']['action']!='explain')
                 if result:
                     # Move persistence off the UI thread as well as model inference.
                     snap=self.runtime.read()
                     self.background('ai_record',lambda r=result,s=snap:self.history.record({'kind':'ai_interpretation','tick':s['tick'],'sim_time':s['sim_time'],'payload':r}))
             elif error: self.notice.setText(error)
+            elif name=='history_query': self.ai_result.setPlainText(json.dumps(result,indent=2))
             elif name=='sessions':
                 self.session_picker.clear()
                 for sid,created,_ in result:
@@ -247,12 +315,19 @@ class Window(QMainWindow):
             index=max(0,bisect.bisect_right(self.replay_times,elapsed)-1)
             state=self.replay_states[index]
             self.replay_label.setText(f'RECORDED HISTORY · sample {index+1}/{len(self.replay_states)} · no interpolation')
-        self.viewport.set_state(state,not self.replay_active); self.viewport.wall_x=self.kernel.wall_x; self.viewport.update()
+        self.viewport.set_state(state,not self.replay_active); self.viewport.wall_x=self.kernel.wall_x
+        if self.views.currentIndex()==0: self.viewport.update()
+        elif self.views.currentIndex()==1: self.signal_view.set_state(state)
+        elif time.perf_counter()-self.last_metrics>=.5: self.data_view.setPlainText(json.dumps(state,indent=2))
         p=state['position']; mode='REPLAY' if self.replay_active else state['simulation_status']
         self.coordinates.setText(f'X {p[0]: .6f}    Y {p[1]: .6f}    Z {p[2]: .6f}\n{mode}  ·  t {state["sim_time"]:.3f} s  ·  tick {state["tick"]:,}')
         now=time.perf_counter()
         if now-self.last_metrics>=.5:
             self.last_metrics=now; h=self.history.stats(); r=self.runtime.stats(); g=self.viewport.stats()
+            self.osc_status.setText(f'SIMULATED s(t) = {state.get("oscillator_value",0):.7f}\nEffective amplitude {state.get("effective_amplitude",1):.5f} · {state.get("telemetry_status","DISABLED")}')
+            hardware=self.telemetry.read()
+            if self.telemetry.enabled and hardware: self.telemetry_label.setText('OBSERVED TELEMETRY\n'+json.dumps(hardware['values'],indent=2)+'\nFresh: '+str(hardware['fresh']))
+            else: self.telemetry_label.setText('Hardware observation disabled / awaiting sample')
             sql=f'{self.sql.status} · replicated {self.sql.rows:,}' if self.sql else 'disabled'
             self.recording_status.setText(f'LOCAL JOURNAL · {h["written"]:,} events committed\nSamples {h["samples_written"]:,} · dropped {h["dropped_samples"]:,}\nQueue {h["queue_depth"]} · SQL: {sql}\nSession {self.history.session_id}')
             self.projection_status.setText('Last command: '+str(self.runtime.last_command_id))
@@ -260,18 +335,22 @@ class Window(QMainWindow):
             if r['error'] or h['error']: self.notice.setText('RECORDING / SIMULATION FAULT: '+str(r['error'] or h['error']))
 
     def closeEvent(self,event):
+        if self.keep_running.isChecked() and not self.force_shutdown:
+            self.tray.show(); self.hide(); event.ignore(); return
         if self.closing: event.accept(); return
         self.closing=True; self.timer.stop()
-        for component in (self.runtime,self.sql,self.history):
+        for component in (self.runtime,self.telemetry,self.sql,self.history):
             if component:
                 try: component.close()
                 except Exception as exc: self.exit_errors.append(str(exc))
         if self.verify_report is not None:
             self.verify_report['clean_shutdown']=not self.exit_errors and not self.runtime.thread.is_alive() and not self.history.thread.is_alive()
             self.verify_report['shutdown_errors']=self.exit_errors
+            self.verify_report['final_recording']=self.history.stats()
             if self.exit_errors: self.verify_report['status']='FAIL'
             (self.args.verify_ui/'gui-verification.json').write_text(json.dumps(self.verify_report,indent=2),encoding='utf-8')
         event.accept()
+        self.tray.hide(); QApplication.instance().quit()
 
 class GUIVerification:
     """Clicks the actual native controls, inspects displayed state, saves rendered pixels."""
@@ -333,18 +412,56 @@ class GUIVerification:
                 w.viewport.grabFramebuffer().save(str(self.dest/'viewport.png'))
                 w.grab().save(str(self.dest/'application.png'))
                 self.check('real framebuffer captured',(self.dest/'viewport.png').stat().st_size>10000)
-                if not w.args.verify_ai: self.finish(); return
             elif self.stage==20:
+                w.osc_enabled.setChecked(True); w.osc_frequency.setValue(2); w.osc_amplitude.setValue(3); w.osc_phase.setValue(1.5708)
+                QTest.mouseClick(w.osc_apply,Qt.LeftButton)
+            elif self.stage==21:
+                from .oscillator import signal
+                self.check('oscillator controls calculate simulated signal',s['oscillator_enabled'] and abs(s['oscillator_value']-signal(3,2,1.5708,s['oscillator_time']))<1e-9)
+                QTest.mouseClick(w.pause_button,Qt.LeftButton)
+            elif self.stage==22:
+                self.entity_checkpoint=s
+                for mode in ('wave','spiral','signal','data'): w.projection_choice.setCurrentText(mode)
+            elif self.stage==23:
+                self.check('perceptual view changes preserve authoritative state',s==self.entity_checkpoint)
+                w.projection_choice.setCurrentText('sphere'); w.send({'action':'delete'})
+            elif self.stage==24:
+                self.check('delete removes active entity but retains history',not s['entity_active'] and w.history.written>0)
+                w.send({'action':'create'})
+            elif self.stage==25:
+                self.check('create generates one new entity identity',s['entity_active'] and s['point_id']!=self.entity_checkpoint['point_id'])
+                w.send({'action':'restore','state':self.entity_checkpoint})
+            elif self.stage==26:
+                self.check('restore reconstructs historical identity and parameters',s['point_id']==self.entity_checkpoint['point_id'] and s['frequency']==2 and s['simulation_status']=='PAUSED')
+                QTest.mouseClick(w.resume_button,Qt.LeftButton)
+            elif self.stage==27:
+                self.hidden_tick=s['tick']; w.keep_running.setChecked(True); w.close()
+            elif self.stage==28:
+                self.check('entity evolves while visualization is closed',not w.isVisible() and s['tick']>self.hidden_tick and w.runtime.thread.is_alive())
+                w.keep_running.setChecked(False); w.showNormal()
+            elif self.stage==29:
+                self.telemetry_started=time.perf_counter(); w.mapping_enabled.setChecked(True); w.apply_mapping()
+            elif self.stage==30:
+                if not w.telemetry.read():
+                    if time.perf_counter()-self.telemetry_started>5: raise AssertionError('Hardware observation unavailable')
+                    return
+            elif self.stage==31:
+                self.check('real opt-in telemetry modulates bounded amplitude',s['telemetry_status']=='MAPPED' and 0<=s['effective_amplitude']<=2)
+                QTest.mouseClick(w.disable_mapping,Qt.LeftButton); w.hardware_enabled.setChecked(False)
+            elif self.stage==32:
+                self.check('hardware modulation can be disabled',not s['telemetry_mapping']['enabled'] and s['effective_amplitude']==s['amplitude'])
+                w.grab().save(str(self.dest/'mission002-application.png'))
+                if not w.args.verify_ai: self.finish(); return
                 self.ai_start_tick=s['tick']; self.ai_start_frames=w.viewport.frames; self.ai_wait_started=time.perf_counter()
                 w.ask_ai()
-            elif self.stage==21:
+            elif self.stage==33:
                 if w.ai_pending:
                     if time.perf_counter()-self.ai_wait_started>110: raise AssertionError('AI GUI deadline exceeded')
                     return
                 self.check('real Qwen structured proposal in packaged GUI',bool(w.proposal) and w.proposal['command']=={'action':'teleport','position':(10.,5.,3.)})
                 self.check('simulation and rendering continue during inference',s['tick']>self.ai_start_tick+100 and w.viewport.frames>self.ai_start_frames+20)
                 QTest.mouseClick(w.apply_ai,Qt.LeftButton)
-            elif self.stage==23:
+            elif self.stage==35:
                 self.check('reviewed AI command executes through kernel',s['position']==(10.,5.,3.))
                 self.finish(); return
             self.stage+=1
@@ -357,7 +474,7 @@ class GUIVerification:
                          'runtime':w.runtime.stats(),'recording':w.history.stats(),'rss_bytes':w.process.memory_info().rss,
                          'sql_status':w.sql.status if w.sql else 'disabled','sql_rows':w.sql.rows if w.sql else 0}
         if w.args.verify_ai: w.verify_report['ai_proposal']=w.proposal
-        QTimer.singleShot(100,w.close)
+        QTimer.singleShot(100,w.shutdown)
 
 def main(argv=None):
     p=argparse.ArgumentParser(description='One spherical computational point. Native controls require no AI.')
@@ -366,10 +483,16 @@ def main(argv=None):
     p.add_argument('--sim-hz',type=int,default=240); p.add_argument('--record-hz',type=int,default=120); p.add_argument('--render-hz',type=int,default=60)
     p.add_argument('--no-sql',action='store_true'); p.add_argument('--verify-ui',type=Path)
     p.add_argument('--verify-ai',action='store_true',help='With --verify-ui, also test the configured real local model')
-    p.add_argument('--ai-endpoint',default='http://127.0.0.1:11434'); p.add_argument('--ai-model',default='qwen3.8:27b'); p.add_argument('--ai-gpu',type=int,default=0)
+    p.add_argument('--keep-running',action='store_true'); p.add_argument('--headless',action='store_true')
+    p.add_argument('--seconds',type=float,default=10); p.add_argument('--command-file',type=Path); p.add_argument('--snapshot-out',type=Path)
+    p.add_argument('--ai-endpoint',default='http://127.0.0.1:11434'); p.add_argument('--ai-model',default='qwen3.8:27b'); p.add_argument('--ai-gpu',type=int,default=8)
     args=p.parse_args(argv)
     if not 1<=args.record_hz<=args.sim_hz<=2000 or not 1<=args.render_hz<=144: p.error('Require 1 <= record Hz <= simulation Hz <= 2000 and 1 <= rendering Hz <= 144')
     args.data_dir.mkdir(parents=True,exist_ok=True)
+    if args.headless:
+        if not 0<args.seconds<=86400: p.error('Headless duration must be 0 < seconds <= 86400')
+        from .headless import run
+        return run(args)
     surface_format(); app=QApplication(sys.argv[:1]); app.setApplicationName('ATOMVERSE POINT ENGINE')
     window=Window(args); window.show(); code=app.exec()
     if window.exit_errors or (window.verify_report and window.verify_report['status']!='PASS'): return 1

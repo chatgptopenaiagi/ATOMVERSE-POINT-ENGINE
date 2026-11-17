@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "version": "0.2.0-alpha.1",
+  "architecture": "Windows x64 / PE machine 0x8664",
+  "archive_name": "ATOMVERSE-POINT-ENGINE-0.2.0-alpha.1-windows-x64.zip",
+  "archive_bytes": 53343693,
+  "archive_sha256": "5ef19b427618c9a0a23987ad4cb6d6bed5a949518892a636dfdbbd82110f325c",
+  "executable_sha256": "d0c7e8302773a41a3da2305758cea79ed3fe2019c415e519104fbfa37545540b",
+  "verified_bundle_files": 184,
+  "all_extracted_hashes_match": true,
+  "extracted_headless_exit_code": 0,
+  "extracted_headless_ticks": 244,
+  "previous_artifacts_overwritten": false
+}

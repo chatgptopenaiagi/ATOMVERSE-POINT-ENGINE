@@ -1,0 +1,454 @@
+{
+  "status": "PASS",
+  "tests": 74,
+  "failures": 0,
+  "errors": 0,
+  "seconds": 5.108,
+  "method": "actual pytest suite, pure numerical tests plus real local journals and controlled network failure",
+  "cases": [
+    {
+      "name": "test_readonly_ai_proposals_have_no_execution_privileges",
+      "class": "tests.test_ai",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_ai_oscillator_commands_remain_bounded",
+      "class": "tests.test_ai",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_structured_output_grammar_rejects_cross_action_fields",
+      "class": "tests.test_ai",
+      "seconds": 0.209,
+      "status": "PASS"
+    },
+    {
+      "name": "test_ai_cannot_route_to_external_or_file_endpoints[https://example.com]",
+      "class": "tests.test_ai",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_ai_cannot_route_to_external_or_file_endpoints[http://user:pass@localhost]",
+      "class": "tests.test_ai",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_ai_cannot_route_to_external_or_file_endpoints[http://127.0.0.1?forward=1]",
+      "class": "tests.test_ai",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_ai_cannot_route_to_external_or_file_endpoints[file:///etc/passwd]",
+      "class": "tests.test_ai",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_oscillator_formula_units_and_pause",
+      "class": "tests.test_entity",
+      "seconds": 0.002,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_entity_command_rejection[c0]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_entity_command_rejection[c1]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_entity_command_rejection[c2]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_entity_command_rejection[c3]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_entity_command_rejection[c4]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_identity_delete_create_restore_and_history_semantics",
+      "class": "tests.test_entity",
+      "seconds": 0.003,
+      "status": "PASS"
+    },
+    {
+      "name": "test_schema1_snapshot_reads_without_rewrite",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_mapping_clamps_is_inspectable_and_inverse_is_partial",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_telemetry_cannot_contaminate_state_and_disable_restores_manual_amplitude",
+      "class": "tests.test_entity",
+      "seconds": 0.002,
+      "status": "PASS"
+    },
+    {
+      "name": "test_exact_command_reexecution_matches_oscillator_and_position",
+      "class": "tests.test_entity",
+      "seconds": 0.092,
+      "status": "PASS"
+    },
+    {
+      "name": "test_full_schedule_does_not_block_direct_stop",
+      "class": "tests.test_entity",
+      "seconds": 0.127,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[tick-nan]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[state_version-True]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[timestamp_ns--1]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[sim_time-inf]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[oscillator_value-nan]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[entity_id-different]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[movement_mode-shell]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_corrupt_restore_rejected_before_any_state_mutation[entity_active-False]",
+      "class": "tests.test_entity",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_local_batches_order_and_exact_replay",
+      "class": "tests.test_history",
+      "seconds": 0.171,
+      "status": "PASS"
+    },
+    {
+      "name": "test_bounded_capture_reports_gaps_and_preserves_commands",
+      "class": "tests.test_history",
+      "seconds": 0.093,
+      "status": "PASS"
+    },
+    {
+      "name": "test_actual_network_disconnect_keeps_journal_and_terminates",
+      "class": "tests.test_history",
+      "seconds": 3.97,
+      "status": "PASS"
+    },
+    {
+      "name": "test_schema_migration_idempotence_and_session_separation",
+      "class": "tests.test_history",
+      "seconds": 0.098,
+      "status": "PASS"
+    },
+    {
+      "name": "test_identity_center_signed_absolute_relative",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_radius_rejected_without_mutation[0]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_radius_rejected_without_mutation[-1]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_radius_rejected_without_mutation[inf]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_radius_rejected_without_mutation[nan]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_radius_rejected_without_mutation[True]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_radius_rejected_without_mutation[1000000000.0]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_rgba_and_geometry_independent_of_motion",
+      "class": "tests.test_kernel",
+      "seconds": 0.004,
+      "status": "PASS"
+    },
+    {
+      "name": "test_constant_acceleration",
+      "class": "tests.test_kernel",
+      "seconds": 0.003,
+      "status": "PASS"
+    },
+    {
+      "name": "test_line_midpoint_and_completion",
+      "class": "tests.test_kernel",
+      "seconds": 0.004,
+      "status": "PASS"
+    },
+    {
+      "name": "test_analytic_trajectories[circle]",
+      "class": "tests.test_kernel",
+      "seconds": 0.003,
+      "status": "PASS"
+    },
+    {
+      "name": "test_analytic_trajectories[spiral]",
+      "class": "tests.test_kernel",
+      "seconds": 0.003,
+      "status": "PASS"
+    },
+    {
+      "name": "test_analytic_trajectories[helix]",
+      "class": "tests.test_kernel",
+      "seconds": 0.003,
+      "status": "PASS"
+    },
+    {
+      "name": "test_pause_resume_preserves_local_path_time",
+      "class": "tests.test_kernel",
+      "seconds": 0.004,
+      "status": "PASS"
+    },
+    {
+      "name": "test_schedule_tick_boundary_and_cancel",
+      "class": "tests.test_kernel",
+      "seconds": 0.002,
+      "status": "PASS"
+    },
+    {
+      "name": "test_swept_wall_prevents_tunneling[pass-10-10]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_swept_wall_prevents_tunneling[stop-4.5-0]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_swept_wall_prevents_tunneling[reflect--1--10]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_swept_wall_prevents_tunneling[slide-4.5-0]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_swept_wall_prevents_tunneling[custom-1.75--5]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_wall_from_positive_side_and_depenetration",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_custom_curve_and_polyline",
+      "class": "tests.test_kernel",
+      "seconds": 0.013,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[__import__('os')]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[t.__class__]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[[t for t in [1]]]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[sin(t,t)]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[2**100000000]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[True]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[open('a')]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_expressions_rejected[1/0]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_runtime_domain_error_fails_projection_without_corrupting_position",
+      "class": "tests.test_kernel",
+      "seconds": 0.002,
+      "status": "PASS"
+    },
+    {
+      "name": "test_strict_ai_boundary[command0]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_strict_ai_boundary[command1]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_strict_ai_boundary[command2]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_strict_ai_boundary[command3]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_strict_ai_boundary[command4]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_strict_ai_boundary[command5]",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_deterministic_reexecution",
+      "class": "tests.test_kernel",
+      "seconds": 0.026,
+      "status": "PASS"
+    },
+    {
+      "name": "test_high_coordinate_precision",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_reset_cancels_schedule_without_resetting_clock_or_identity",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    },
+    {
+      "name": "test_projection_continue_velocity",
+      "class": "tests.test_kernel",
+      "seconds": 0.003,
+      "status": "PASS"
+    },
+    {
+      "name": "test_resume_after_collision_and_completed_continuation",
+      "class": "tests.test_kernel",
+      "seconds": 0.005,
+      "status": "PASS"
+    },
+    {
+      "name": "test_failed_relative_command_does_not_cancel_existing_motion",
+      "class": "tests.test_kernel",
+      "seconds": 0.001,
+      "status": "PASS"
+    }
+  ]
+}

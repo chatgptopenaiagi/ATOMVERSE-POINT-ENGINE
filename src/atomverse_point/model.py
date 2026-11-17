@@ -5,6 +5,7 @@ import ast
 import math
 import time
 import uuid
+import json
 
 LIMIT = 1e9
 
@@ -108,7 +109,64 @@ ACTIONS = {
     'appearance': {'radius','color','intensity','representation'}, 'collision': {'mode','restitution','wall_x'},
     'trajectory': {'trajectory'}, 'pause': set(), 'resume': set(), 'stop': set(), 'reset': set(),
     'cancel': {'command_id'},
+    'create': {'entity_id'}, 'delete': set(), 'restore': {'state'},
+    'oscillator': {'frequency','amplitude','phase','enabled'},
+    'information': {'information_state'},
+    'mapping': {'enabled','metric','input_min','input_max','amplitude_min','amplitude_max'},
 }
+
+METRICS = {'cpu_utilization','gpu_utilization','gpu_power_watts','cpu_clock_mhz','gpu_clock_mhz','memory_utilization'}
+
+def information(value):
+    if not isinstance(value,dict) or len(value)>32: raise ValueError('Information state must be an object with at most 32 fields')
+    def check(obj,depth=0):
+        if depth>4: raise ValueError('Information state nesting limit exceeded')
+        if isinstance(obj,dict):
+            if any(not isinstance(k,str) or len(k)>64 for k in obj): raise ValueError('Invalid information key')
+            for v in obj.values(): check(v,depth+1)
+        elif isinstance(obj,list):
+            if len(obj)>128: raise ValueError('Information list limit exceeded')
+            for v in obj: check(v,depth+1)
+        elif isinstance(obj,str):
+            if len(obj)>1024: raise ValueError('Information string limit exceeded')
+        elif obj is not None and not isinstance(obj,bool): number(obj)
+    check(value)
+    encoded=json.dumps(value,allow_nan=False)
+    if len(encoded)>16384: raise ValueError('Information state exceeds 16 KiB')
+    return json.loads(encoded)
+
+def mapping(raw):
+    if not isinstance(raw,dict): raise ValueError('Mapping must be an object')
+    if 'enabled' in raw and not isinstance(raw['enabled'],bool): raise ValueError('Mapping enabled must be boolean')
+    d={'enabled':raw.get('enabled',False),'metric':raw.get('metric','cpu_utilization'),
+       'input_min':number(raw.get('input_min',0)), 'input_max':number(raw.get('input_max',100)),
+       'amplitude_min':number(raw.get('amplitude_min',0),0,1e6),'amplitude_max':number(raw.get('amplitude_max',1),0,1e6)}
+    if d['metric'] not in METRICS or d['input_min']>=d['input_max']: raise ValueError('Invalid telemetry mapping range or metric')
+    return d
+
+def normalize_snapshot(raw):
+    """Read schema 1 records without rewriting their historical bytes."""
+    if not isinstance(raw,dict) or isinstance(raw.get('schema_version',1),bool) or raw.get('schema_version',1) not in (1,2): raise ValueError('Unsupported state schema')
+    defaults=PointState().snapshot()
+    if set(raw)-set(defaults)-{'event_seq','restored_from'}: raise ValueError('Unknown state field')
+    if 'point_id' not in raw or not isinstance(raw['point_id'],str) or len(raw['point_id'])>64: raise ValueError('Missing point identity')
+    d=dict(defaults,**raw); d['entity_id']=d['point_id']; d['schema_version']=2
+    if raw.get('entity_id',raw['point_id'])!=raw['point_id']: raise ValueError('Entity identity aliases disagree')
+    for key in ('tick','state_version','timestamp_ns'):
+        if isinstance(d[key],bool) or not isinstance(d[key],int) or not 0<=d[key]<2**63: raise ValueError('Invalid integer state field: '+key)
+    d['sim_time']=number(d['sim_time'],0,1e9)
+    d['oscillator_value']=number(d['oscillator_value'],-1e6,1e6)
+    d['effective_amplitude']=number(d['effective_amplitude'],0,1e6)
+    if d['movement_mode'] not in ('manual','velocity','line','circle','spiral','helix','custom','polyline'): raise ValueError('Invalid movement mode')
+    if d['simulation_status'] not in ('RUNNING','PAUSED','STOPPED','DELETED','FAULT'): raise ValueError('Invalid execution status')
+    for key in ('position','velocity','acceleration'): d[key]=vector(d[key])
+    d['color']=vector(d['color'],4,0,1); d['radius']=number(d['radius'],.001,1e6)
+    for key,low,high in [('frequency',0,1000),('amplitude',0,1e6),('phase',-1e6,1e6),('oscillator_time',0,1e9),('intensity',0,5)]: d[key]=number(d[key],low,high)
+    if not isinstance(d['entity_active'],bool) or not isinstance(d['oscillator_enabled'],bool): raise ValueError('Invalid state flags')
+    if d['representation'] not in ('solid','wireframe','transparent','luminous','center'): raise ValueError('Invalid representation')
+    if d['collision_mode'] not in ('pass','stop','reflect','slide','custom'): raise ValueError('Invalid collision mode')
+    d['information_state']=information(d['information_state']); d['telemetry_mapping']=mapping(d['telemetry_mapping'])
+    return d
 
 def validate_command(raw):
     if not isinstance(raw,dict) or raw.get('action') not in ACTIONS: raise ValueError('Unknown command action')
@@ -134,6 +192,19 @@ def validate_command(raw):
     if action=='cancel':
         try: uuid.UUID(c['command_id'])
         except (ValueError, TypeError, AttributeError) as exc: raise ValueError('Invalid command ID') from exc
+    if action=='oscillator':
+        if not (set(c)&ACTIONS[action]): raise ValueError('No oscillator parameters supplied')
+        for key,low,high in [('frequency',0,1000),('amplitude',0,1e6),('phase',-1e6,1e6)]:
+            if key in c: c[key]=number(c[key],low,high)
+        if 'enabled' in c and not isinstance(c['enabled'],bool): raise ValueError('Oscillator enabled must be boolean')
+    if action=='information': c['information_state']=information(c.get('information_state'))
+    if action=='mapping': c=dict(mapping(c),action=action,**({'at':c['at']} if 'at' in c else {}))
+    if action=='restore':
+        c['state']=normalize_snapshot(c.get('state'))
+        if not c['state']['entity_active']: raise ValueError('Choose an active historical state to restore')
+    if action=='create' and 'entity_id' in c:
+        try: uuid.UUID(c['entity_id'])
+        except (ValueError,TypeError,AttributeError) as exc: raise ValueError('Invalid entity UUID') from exc
     return c
 
 @dataclass
@@ -153,6 +224,17 @@ class PointState:
     sim_time: float = 0.
     intensity: float = 1.
     representation: str = 'solid'
+    entity_active: bool = True
+    frequency: float = 1.
+    amplitude: float = 1.
+    phase: float = 0.
+    oscillator_enabled: bool = False
+    oscillator_time: float = 0.
+    oscillator_value: float = 0.
+    effective_amplitude: float = 1.
+    information_state: dict = field(default_factory=dict)
+    telemetry_mapping: dict = field(default_factory=lambda:mapping({}))
+    telemetry_status: str = 'DISABLED'
 
     def snapshot(self):
-        return asdict(self)
+        return dict(asdict(self),schema_version=2,entity_id=self.point_id)

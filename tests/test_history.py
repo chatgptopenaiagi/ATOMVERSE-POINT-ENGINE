@@ -51,6 +51,6 @@ def test_schema_migration_idempotence_and_session_separation(tmp_path):
     first=History(path,'first'); first.sample(Kernel().state.snapshot()); first.close()
     second=History(path,'second'); second.sample(Kernel().state.snapshot()); second.close()
     with sqlite3.connect(path) as c:
-        assert c.execute('SELECT count(*) FROM schema_migrations').fetchone()[0]==1
+        assert c.execute('SELECT version FROM schema_migrations ORDER BY version').fetchall()==[(1,),(2,)]
         assert c.execute('SELECT count(*) FROM sessions').fetchone()[0]==2
     assert len(replay(path,first.session_id))==len(replay(path,second.session_id))==1

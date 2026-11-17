@@ -1,0 +1,193 @@
+{
+  "status": "PASS",
+  "error": null,
+  "checks": [
+    {
+      "name": "one primary sphere at origin",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "hardware OpenGL context",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "absolute positive and negative coordinates",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "camera independent; radius and RGBA",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "line reaches destination",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "helical motion changes position",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "pause freezes simulation time and coordinates",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "resume advances point",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "stop at sphere-expanded wall boundary",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "pass through wall",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "history replay loads recorded states",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "replay does not mutate live position",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "real framebuffer captured",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "oscillator controls calculate simulated signal",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "perceptual view changes preserve authoritative state",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "delete removes active entity but retains history",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "create generates one new entity identity",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "restore reconstructs historical identity and parameters",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "entity evolves while visualization is closed",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "real opt-in telemetry modulates bounded amplitude",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "hardware modulation can be disabled",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "real Qwen structured proposal in packaged GUI",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "simulation and rendering continue during inference",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    },
+    {
+      "name": "reviewed AI command executes through kernel",
+      "passed": true,
+      "method": "actual GUI control and runtime observation"
+    }
+  ],
+  "packaged": true,
+  "version": "0.2.0-alpha.1",
+  "renderer": {
+    "graphics": {
+      "vendor": "NVIDIA Corporation",
+      "renderer": "NVIDIA GeForce RTX 3050/PCIe/SSE2",
+      "version": "4.6.0 NVIDIA 621.24"
+    },
+    "frames": 1970,
+    "average_fps": 54.10852914639718,
+    "mean_cpu_paint_ms": 0.8219518333680753
+  },
+  "runtime": {
+    "worker_iterations_hz": 240.00262771964458,
+    "worker_cpu_equivalent_percent": 4.459136507927502,
+    "timing_overruns": 0,
+    "error": null,
+    "command_count_measured": 25,
+    "command_latency_p95_ms": 3.6434,
+    "command_latency_max_ms": 3.6515,
+    "mean_kernel_update_us": 20.1774169921875
+  },
+  "recording": {
+    "session_id": "2cbf889f-a434-4c5e-979f-7693cc6ecd00",
+    "written": 4018,
+    "samples_written": 3900,
+    "dropped_samples": 0,
+    "queue_depth": 1,
+    "batches": 901,
+    "events_per_second": 110.1906293225169,
+    "last_commit_ms": 121.69569999969099,
+    "error": null,
+    "payload_bytes": 17145722
+  },
+  "rss_bytes": 260775936,
+  "sql_status": "OFFLINE / LOCAL JOURNAL",
+  "sql_rows": 0,
+  "ai_proposal": {
+    "command": {
+      "action": "teleport",
+      "position": [
+        10.0,
+        5.0,
+        3.0
+      ]
+    },
+    "model": "qwen3.8:27b",
+    "classification": "AI_INTERPRETATION",
+    "elapsed_seconds": 20.819331099999545,
+    "eval_count": 16,
+    "eval_duration_ns": 4766575000,
+    "load_duration_ns": 10275185600
+  },
+  "clean_shutdown": true,
+  "shutdown_errors": [],
+  "final_recording": {
+    "session_id": "2cbf889f-a434-4c5e-979f-7693cc6ecd00",
+    "written": 4050,
+    "samples_written": 3932,
+    "dropped_samples": 0,
+    "queue_depth": 0,
+    "batches": 905,
+    "events_per_second": 110.23923039886655,
+    "last_commit_ms": 59.5921999993152,
+    "error": null,
+    "payload_bytes": 17172616
+  }
+}
